@@ -56,7 +56,7 @@ def test(
     top_k: int = 3,
     borders: int = 1,
     device: str = 0,
-    qa_file: str = "",
+    qa_file: str = "qa.csv",
     results_dir: str = "results",
 ):
     device_ = set_device(device)
@@ -64,8 +64,8 @@ def test(
     model = BrainBot(generative_codename=generative_codename, encoder_codename=encoder_codename, top_k=top_k, borders=borders, device=device_)
     model.load()
     __path_check(results_dir)
-    model.ask("Does your cat spend much time sleeping?", [])
-    # test_qa(model, generative_codename, encoder_codename, results_dir=results_dir, test_dir="datasets", qa_file=qa_file)
+    #model.ask("Does your cat spend much time sleeping?", [])
+    test_qa(model, generative_codename, encoder_codename, results_dir=results_dir, test_dir="conversations/dataset", qa_file=qa_file)
     model.unload()
 
 

@@ -18,11 +18,12 @@ def _get_files(file: dict):
 
 
 class SentenceRetriever:
-    def __init__(self, encoder_model_id: str, top_k: int = 3, borders: int = 1, device: int = 0):
+    def __init__(self, encoder_model_id: str, top_k: int = 3, borders: int = 1, device: int = 0, rand_sample_percent : float = 0.01):
         self.encoder_model_id = encoder_model_id
         self.device = device
         self.top_k = top_k
         self.borders = borders
+        self.rand_sample_percent = rand_sample_percent if rand_sample_percent <= 1.0 else 1.0
 
     def load(self):
         self.model = SentenceTransformer(self.encoder_model_id, trust_remote_code=True, device=(f"cuda:{self.device}" if isinstance(self.device, int) else None))
@@ -37,22 +38,22 @@ class SentenceRetriever:
     def fetch_conversation(self, df_corpus: pd.DataFrame, dataframe_idx) -> str:
         if self.borders == 0:
             info = df_corpus.iloc[dataframe_idx]
-            return info["message"]
+            return info["dialog"]
 
         info = df_corpus.iloc[dataframe_idx - self.borders : dataframe_idx + self.borders + 1]
-        info = info[info["conversation_id"] == df_corpus.iloc[dataframe_idx]["conversation_id"]]
+        info = info[info["id"] == df_corpus.iloc[dataframe_idx]["id"]]
 
-        text = "\n".join([f" - {msg}" for msg in info["message"]])
+        text = "\n".join([f" - {msg}" for msg in info["dialog"]])
         return text
 
     def is_from_same_conversation(self, i: int, j: int) -> bool:
-        return self.df_data.iloc[i]["conversation_id"] == self.df_data.iloc[j]["conversation_id"]
+        return self.df_data.iloc[i]["id"] == self.df_data.iloc[j]["id"]
 
     def retrieve(self, query, verbose: bool = False):
         t = time.time()
         query_vector = self.model.encode([query])
 
-        # TODO: talvez aqui seria bom implementar algo que ao detectar índices próximos com mesmo "conversation_id" ele retorna os border antes do menor índice e border após o maior índice.
+        # TODO: talvez aqui seria bom implementar algo que ao detectar índices próximos com mesmo "id" ele retorna os border antes do menor índice e border após o maior índice.
         def check_closeness(idx: list[int]):
             for i in range(len(idx)):
                 for j in range(0, i):
@@ -71,10 +72,22 @@ class SentenceRetriever:
             top_k_ids = unique[index.argsort()]
 
             return [self.fetch_conversation(self.df_data, idx) for idx in top_k_ids[: self.top_k]]
+        
+        def get_theme_of_query():
+            theme_of_query = query
+            return self.model.encode([theme_of_query])
 
+        # olhar também aleatoriamente uma % muito pequena da nossa memória
+        def get_rand_sample():
+            if self.rand_sample_percent <= 0.0:
+                return []
+            total_items = len(self.df_data) // 2
+            return [self.fetch_conversation(self.df_data, idx) for idx in np.random.choice(total_items, size=int(total_items*self.rand_sample_percent), replace=False)]
+        
         try:
             if self.df_data is not None:
                 results = search_in_index()
+                #results = list(set(search_in_index()) | set(get_rand_sample())) # Não melhora significativamente o resultado e fica grande demais pra ler e validar
 
         except Exception as e:
             print("Error: ", str(e))

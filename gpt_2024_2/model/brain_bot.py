@@ -150,6 +150,7 @@ class BrainBot:
         return formatted_message, text_books, time_retrieval
 
     def ask(self, message: str, history: list[dict] = [], memory_limit: int = 0) -> Tuple[str, str, int, float, float]:
+        print(f"Valor de 'message': {message} (Tipo: {type(message)})")
         query, rag_context, time_retrieval = self.format_message(message, history, memory_limit)
         response, memory_used, time_response = self._get_response(query)
 

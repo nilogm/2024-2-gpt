@@ -31,7 +31,7 @@ def test_qa(model: BrainBot, generative_codename: str, encoder_codename: str, re
 
             row = df.iloc[idx]
             question = row["question"]
-            response, rag_context, memory_used, retrieval_time, query_time = model.chat_module.ask(question)
+            response, rag_context, memory_used, retrieval_time, query_time = model.ask(question)
 
             df.at[idx, "system_answer"] = response
             df.at[idx, "rag_context"] = rag_context

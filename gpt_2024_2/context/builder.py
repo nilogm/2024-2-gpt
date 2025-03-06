@@ -7,7 +7,7 @@ from sentence_transformers import SentenceTransformer
 
 
 def build_chunks(path: str, destination_path: str, key: str, verbose: bool = False):
-    corpora = pd.DataFrame(columns=["conversation_id", "message", "date"])
+    corpora = pd.DataFrame(columns=["id", "dialog", "act", "emotion"])
 
     if verbose:
         print(f"Building memories from conversations...")
@@ -15,10 +15,10 @@ def build_chunks(path: str, destination_path: str, key: str, verbose: bool = Fal
     for filename in os.listdir(path):
         if filename.endswith(".csv"):
             df = pd.read_csv(os.path.join(path, filename))
-            corpora = pd.concat([corpora, pd.DataFrame({"conversation_id": df["conversation_id"], "message": df["message"]})], ignore_index=True)
+            corpora = pd.concat([corpora, pd.DataFrame({"id": df["id"], "dialog": df["dialog"]})], ignore_index=True)
 
     # TODO: implementar isso
-    corpora["date"] = None
+    #corpora["date"] = None
 
     if verbose:
         print(corpora.tail())
@@ -39,7 +39,7 @@ def build_index(source: str, destination: str, encoder_model: SentenceTransforme
 
     df = pd.read_csv(source)
 
-    encoded_data = encoder_model.encode(df["message"].tolist(), show_progress_bar=verbose)
+    encoded_data = encoder_model.encode(df["dialog"].tolist(), show_progress_bar=verbose)
     encoded_data = np.asarray(encoded_data.astype("float32"))
     index = faiss.IndexIDMap(faiss.IndexFlatIP(encoder_model_dimensions))
     index.add_with_ids(encoded_data, np.array(range(len(df))))
