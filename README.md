@@ -18,3 +18,7 @@
 
 ### Adendos
  - Talvez seja bom fazer embeddings considerando a mensagme anterior e a próxima (ou 2 antes, etc.) para que haja algum tipo de contexto da conversa para uma melhor busca por similaridade.
+
+ ## Comandos
+  - poetry run exec init --encoder-codename="gte"
+  - poetry run exec test --generative-codename="llama" --encoder-codename="gte"

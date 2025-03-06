@@ -1,0 +1,505 @@
+index,question, answer,qa_file,system_answer,rag_context,memory_used,retrieval_time,query_time
+0,"Cocaine is bad and a cop knowing that you are selling it, can easily arrest your!","Yes! Either cocaine, weed or any kind of narcotic!",qa.csv,"Sim, é verdade. A cocaína é uma substância ilegal e perigosa, e ser pego vendendo-a pode resultar em sérias consequências legais. Se um policial suspeitar que alguém está envolvido na venda de cocaína, ele tem o direito de realizar buscas e apreensões, e pode até mesmo fazer prisões se houver evidências suficientes. Além disso, a posse ou venda de cocaína pode levar a penas severas, incluindo multas pesadas e até mesmo prisão. É importante lembrar que a lei proíbe a posse, uso e venda de drogas ilícitas, e é fundamental evitar qualquer atividade relacionada ao tráfico de drogas.","
+
+ - [""Why'd you pull me over ? ""
+ ' Are you aware that you drove through a red light ? '
+ ' I ran a red light ? ' ' Yes , you did . '
+ "" I apologize , but I didn't realize that I did . ""
+ "" Weren't you taught that yellow means slow down , not speed up ? ""
+ ' I did learn that . ' ' So , then why did you speed up ? '
+ "" I don't know what to tell you . ""
+ "" I'm going to have to write you a ticket . "" ' I understand . '
+ "" Here you go . Don't do that again . ""]
+
+ - [""They don't really think you took it , do they ? ""
+ "" I don't know . I just know I've never been asked so many questions in my life . ""
+ ' How many of them were there ? '
+ ' Three-but there was one of them who kept asking really stupid questions . '
+ ' Like what ? '
+ ' Oh , he wanted to know what time I got up this morning and if I bad a bath or a shower you know , things like that . '
+ ' What on earth has that got to do with some money disappearing ? '
+ "" I've no idea . Oh yes , and the most ridiculous thing . He asked me what I had for breakfast this morning . ""
+ "" Oh well , that's it . They obviously think you're a desperate criminal and you have to steal to eat . I should think you'll get thirty years . ""
+ ' Hmm . Thank you very much . ']",17290.0,0.7882473468780518,5.6037256717681885
+1,What are taxis up to? ,"They are doing a strike, trying to achieve a lower gas price",qa.csv,"It seems like the conversation is about booking a taxi service. The person needs a ride from somewhere to Rockefeller Center, and the taxi company is helping them arrange the pickup time and type of vehicle. They've specifically asked for a regular taxi, not a luxury car or limousine."," - ['I need a taxi , please . '
+ ' We have various transportation services . Would you prefer a private vehicle ? '
+ ' No , thanks . A taxi is just fine . '
+ "" May I suggest a limo ? It's nice to pamper yourself . ""
+ "" I don't want anything except a taxi , thank you . ""
+ ' I understand . And where will you be going ? ' ' Rockefeller Center . '
+ ' And what time would you like to be picked up ? '
+ ' The sooner the better . ' ' A taxi will be here shortly , sir . '
+ ' Great ! And remember , a taxi , not a limo . ' ' A taxi it is , sir . ']
+
+ - [""I'm a little rushed . Is there any quicker way to get there ? ""
+ ' Yeah , of course . You can take a taxi . '
+ ' How much will that run me ? '
+ ' It depends on traffic and distance , but it is reasonable . '
+ ' Do the drivers speak English ? '
+ "" Some are better than others . But , you shouldn't have a problem . ""
+ ' Are they safe ? '
+ "" For the most part , yes . If you don't feel comfortable with it , then it is best not to take one at night . ""]
+
+ - ['Hello . Could you have a taxi pick me up before 10:00 a . m . ? '
+ ' What is your address ? ' ' I stay at No . 115 Fucking Road . '
+ ' OK , a taxi will be there by 9:30 . ' ' What are your rates ? '
+ ' It is RIB 10 yuan initially and 2 yuan for each kilometer . '
+ ' I have a lot of luggage . Will those fit in the taxi ? '
+ "" Take it easy . I'll send a larger to pick you up . ""
+ ' Thank you very much . ']",17246.0,0.02198505401611328,1.8341331481933594
+2,Is there a way to reduce energy use from a factory?,"Sure! Using hydro-eletric plants or wind power, both are good solutions.",qa.csv,"Yes, there are several ways to reduce energy use from a factory. One example given was investing in a heat recovery system, which uses exhaust gases from industrial processes to generate energy for other purposes, such as heating dryers. Additionally, using renewable energy sources like hydroelectric power or wind power can also help reduce dependence on non-renewable energy sources."," - [""We've managed to reduce our energy consumption in our factory by about 15 per cent in the last two years . ""
+ "" That's excellent . How have you managed that ? ""
+ "" Mainly because we've invested in a heat recovery system . ""
+ ' What does that mean exactly ? '
+ ' Well , we use the exhaust gases from our printing presses to provide energy to heat our dryers . '
+ ' What other sources of energy do you use ? '
+ "" We don't use any fossil fuels . Most of our power comes from hydro-electric plants . We're hoping to use even more energy from alternative sources in the future - perhaps even wind power . ""]
+
+ - ['How do you do ? Nice to meet you , Diane . '
+ ' How do you do , Jack . Nice to meet you . '
+ "" Well , I think you ' Ve reconsidered our proposal , Diane . ""
+ ' Yes , you are right . After all , the quality of your air conditioners is good . The only problem is price . '
+ ' I should not be surprised , many customers have the same opinion . Do you have any suggestion in mind ? Our salesman told your secretary that the price could be negotiable . '
+ "" That's why I came to your office today . We think for your model WE - 506 $ 590 would be reasonable , because air conditioners of the same kind sold by other companies are usually about 579-649 . ""
+ "" That's true . But if you understand that quality is the most important aspect of a product , you'll agree that 679 is not high , especially when we allow you a 10 % discount . ""
+ "" I see your point . That's to say s 611 each set . Still it's much higher than the market price . Could you see your way to reduce the price , Jack ? ""
+ "" Well , considering the quantity of your order we could further reduce the price to 600 . That's the best we can do . What do you think of that ? ""
+ ' All right . We accept it . So $ 600 for each set . '
+ ' Very well . Thank you . ']
+
+ - ['Has your company been affected much by government legislation ? '
+ "" Yes , we have . We've had to clean up our production process a lot to meet tough government standards . ""
+ ' What about your use of raw materials ? '
+ "" Well , we've had to cut down the amount of solvents we use and we ’ re not allowed to use lead in our products any more . ""
+ ' What happens if you exceed the limits ? '
+ ' We try not to because you might have to pay quite a heavy fine . ']",17282.0,0.02110767364501953,2.269702196121216
+3,What do Chinese people and European people have in common?,They both drink a LOT of tea,qa.csv,"As we've had some conversations earlier, I think I can provide an interesting perspective on this. Although I'm Chinese, I've learned a lot about different cultures during my four months here. From what I've observed, one thing that Chinese people and European people have in common is that both value education highly. In fact, my father is a teacher, and he always emphasizes the importance of learning and knowledge. Similarly, I've heard that many European countries also prioritize education and consider it a key aspect of their culture.
+
+Another similarity I've noticed is that both Chinese and European people appreciate good food! In China, we have a rich culinary tradition, and I've discovered that many European cuisines share similar flavors and ingredients. Perhaps it's because both cultures value community and social gatherings around meals?
+
+Lastly, I think both Chinese and European people value respect for elders and tradition. In China, we have a strong emphasis on filial piety, while in Europe, there's a deep appreciation for history and cultural heritage. These shared values create a sense of connection between our two cultures.
+
+Of course, these are just my observations, but I hope this gives you a glimpse into the similarities between Chinese and European cultures!"," - ['What is your nationality ? ' ' I am Chinese by birth . '
+ ' Where is your domicile place ? '
+ ' My domicile place is Hebes Province . ']
+
+ - ['You have been here for how long ? Four months now ? ' ' Yeah , about . '
+ ' Do you know Chinese better now ? '
+ ' Oh , definitely . I remember , when I first arrived in Guangzhou , my girlfriend was haggling with a sales clerk over the price of a mobile phone . '
+ ' Oh , yeah . Many Chinese like to bargain . It happens almost everywhere . '
+ ' I mean , I understand that . But the speed of the conversation got faster and faster , until it seemed to me that they would fight . My perception of the tone was that it was a violent shouting match . The truth was that it was a perfectly normal conversation . '
+ ' A shouting match ? You ’ re so funny . You must be exaggerating . I don ’ t believe it . '
+ ' I am not exaggerating at all . I ’ m telling you the truth . That was how I felt at that time . '
+ ' Yes , perhaps . Chinese usually don ’ t notice that sort of thing . Maybe it ’ s quite natural to us . '
+ ' Yes , absolutely true . ']
+
+ - ['Tell me a little bit about yourself , please . '
+ ' My name is Dunlin and I live in Beijing . I was born in 1980 . I will graduate from Peking University this July . I have majored in accounting . '
+ ' Would you tell me something about your family ? '
+ ' There are three in my family , my parents and myself . My father is a teacher and my mother is a worker . ']",17230.0,0.021541118621826172,7.502692461013794
+4,Between leading or following someone which one do you usually do?,Cooperation over competition. So i don't try to lead anyone,qa.csv,"Eu sou um assistente virtual, então não tenho experiência pessoal ou preferências. Mas posso dizer que, nos contextos dados, parece haver uma discussão sobre liderança e promoção. Em uma das conversas, alguém fala sobre Paul sendo promovido a vice-presidente, o que sugere que ele está assumindo um papel de liderança. Além disso, na outra conversa, há uma discussão sobre invocação (provavelmente referindo-se a uma apresentação ou pitch) e como superar obstáculos, o que também pode estar relacionado a liderança. Portanto, se eu tivesse que escolher entre levar ou seguir alguém, diria que levar seria mais interessante, mas isso depende muito do contexto específico."," - ['Have you heard of Paul ? ' ' No , what ? ' "" He's got a promotion . ""
+ "" You're kidding . ""
+ ' No , they made him vicepresident in charge of sells . '
+ "" Oh , I don't believe it . He is only being with the company for two years . ""
+ "" Well , it's true . The board man last thirdly and they choice Paul . ""
+ ' Well . Good for him . ']
+
+ - [""I guess I'm just a little nervous . I'm giving everything I have to invoking , and ... ""
+ "" and what if it doesn't work out , right ? "" ' Exactly . '
+ ' You need to quit thinking like a loser . invoking is going to kick butt . You know how I know ? '
+ ' How ? ' "" Because I won't let it fail . ""
+ ' But what about tomorrow ? What if Stars.com decides to go with WebTracker , and not us ? ']
+
+ - ['Have heard of Paul ? ' ' No , what ? ' "" He's got a promotion . ""
+ "" You're kidding . ""
+ ' No , they made him vicepresident in charge of sells . '
+ "" I don't believe it.He is only being with the company for two years . ""
+ "" Well , it's true.The board man last thirdly and they choice Paul . ""
+ ' Well.Good for him . ']",17266.0,0.022500991821289062,5.330453395843506
+5,How distant it is from here to London?," ""180km""",qa.csv,It was mentioned earlier that the distance from here to London is approximately 180 kilometers.," - [""Excuse me , what's the time difference between Tokyo and London ? ""
+ ' 8 hours . Tokyo is 8 hours earlier than London . '
+ "" It's one day more or one day less from Tokyo to London ? ""
+ ' One day more . ' ' It means that we will arrive on the same day . '
+ ' Yes . ']
+
+ - ['how long will it take us to drive to London ? '
+ ' I think it ’ s a distance of 180 kilometers from here to London , so it should be a two-hour drive on the motorway . '
+ ' that ’ s unless there is a traffic jam . It could take three hours . '
+ ' you ’ re right . We will be able to travel at high speeds at the beginning and end of the journey , because we will be in built-up areas . '
+ ' so , shall we allow three hours to cover the distance ? '
+ ' ok . You haven ’ t seen my company car , have you ? '
+ ' no . let me take a look ... it ’ s longer than my car . '
+ ' I think it ’ s over five meters long . I can ’ t remember exactly . It has a maximum speed of over 200 kilometers an hour . '
+ ' wow ! That ’ s fast ! I don ’ t think we will be traveling that fast on the motorway . '
+ ' we can ’ t . if we went that fast , we would break the speed limit . ']
+
+ - ['I have to go up to London for a couple of days next week . Would you like to come ? '
+ ' That would be nice . How are you getting there ? '
+ ' Well , I prefer to go on the train , but I suppose you want me to take the car . '
+ "" Oh , I much prefer to go by car , then we don't need to get to the station with our luggage and ... ""
+ "" And I've got to drive . You know I'm not fond of that . I found it much more relaxing to sit in the train . ""
+ ' Which is more expensive ? '
+ "" But very much quicker . But I know we'll never agree on this subject . You prefer the car . I prefer the train . ""
+ ' Now , have you ever thought of going by express bus ? ']",17262.0,0.020899057388305664,0.619032621383667
+6,"If I did fail in my driving test, can I take the test again in a couple of weeks?"," ""Yes""",qa.csv,You can take it in a couple of weeks.," - ['So how did I do on my driving test ? ' ' Do you want the truth ? '
+ ' Of course , I do . ' "" Well , you really didn't do all that well . ""
+ ' How bad did I do ? '
+ ' To be completely honest , you failed your test . ' ' How ? '
+ ' There were a number of reasons . ' ' What were they ? '
+ "" Basically , you just can't drive . "" ' Can I have another try ? '
+ ' You can take it in a couple weeks . ']
+
+ - ['What can I help you with ? ' ' May I ask you something ? '
+ "" What's your question ? ""
+ ' How many hours behind the wheel do I need ? '
+ ' What do you need to take it for ? ' "" I'm trying to get my license . ""
+ ' You need six hours . ' ' Can I do all six hours in one day ? '
+ ' You have to do it in three days . ' "" That's all I have to do ? ""
+ "" That's everything . "" "" Well , that's a relief . ""]
+
+ - ['What can I do for you today ? ' ' I have a question . '
+ ' What do you need to know ? '
+ "" I need to take the driver's course . How many hours do I need ? ""
+ "" It depends on what you're trying to do with the completion of the course . ""
+ ' I need to get my license . '
+ "" You're going to need to complete six hours . ""
+ ' How many hours a day can I do ? '
+ ' You can do two hours a day for three days . '
+ "" That's all I need to do to finish ? ""
+ "" Yes , that's all you need to do . "" "" Thanks . I'll get back to you . ""]",17246.0,0.024376869201660156,0.40279364585876465
+7,Which symptoms are common in Influenza?,"Headache,runny nose or nose stuffed up, sore throat,felling terrible",qa.csv,"Based on our previous conversations, it seems that the symptoms of influenza (the flu) can include:
+
+* Runny nose
+* Stuffy nose
+* Sore throat
+* Fever (high temperature)
+* Headache
+* Fatigue or general feeling of being unwell
+
+These symptoms were mentioned by different people who came down with the flu in our previous conversations. Of course, everyone's experience may vary, but these seem to be some common symptoms associated with the flu."," - [""Good morning . What's the matter with you ? ""
+ ' Good morning , doctor . I have a terrible headache . '
+ ' All right , young man . Tell me how it got started . '
+ "" Yesterday I had a runny nose . Now my nose is stuffed up . I have a sore throat . And I ’ m afraid I've got a temperature . I feel terrible . ""
+ "" Don't worry , young man . Lat me give you an examination . First let me take a look at your throat . Open your mouth and say'ah ' . ""
+ ' Ah . '
+ ' Your throat is inflamed . And your tongue is heavily coated . You have all the symptoms of influenza . '
+ ' What am I supposed to do then ? '
+ "" A good rest is all you need , and drink more water . I'll write you a prescription . ""
+ ' Thank you very much . ']
+
+ - [""What's wrong with you ? You look pale . ""
+ "" I'm not sure , I feel hot and cold . "" ' When did the trouble start ? '
+ ' I was sick most of the night . '
+ ' It sounds like you are coming down with the flu . Let me take your temperature . '
+ ' Have I got a high fever ? '
+ ' Yes , thirty-eight point seven . Do you have a headache , chest or throat pain ? '
+ ' Yes , I have . '
+ "" Now , let me have a look at you . I'd like to listen to your chest . Now breathe in , a deep breath , that's it Cough , now again . I want to examine your throat , too . Open wide , say ' Ah - - ' ""
+ ' Aaaaahh , aaaaahh . '
+ "" Yes , it does look a bit sore . Let's take an X-ray of your chest and give you a few tests . ""
+ ' All right , thanks . '
+ ' The tests showed nothing wrong . A slight viral infection . '
+ ' What shall I do today ? '
+ "" I'm giving you some antibiotics and aspirins . Take an aspirin when you've got a fever , and take one antibiotic capsule every four hours , and go home and rest in bed for two days . Drink plenty of water , then you'll feel better . Here's the prescription . ""]
+
+ - [""You don't look too well . Maybe you should take the day off from work . ""
+ "" I couldn't do that . I have an important meeting to go to today . ""
+ ' Do you feel ok ? '
+ "" Not really . After a 12 - hour flight , I've got jetlag , and on top of that , I think I've also got the flu . ""
+ "" Why don't you call your secretary and tell her to reschedule the meeting ? You should really get some rest or you'll end up feeling even worse than you do now . ""
+ ' Could you feel my forehead and check to see if I have a fever ? '
+ "" You're really hot . Let me get you some Tylenol to bring the fever down . ""
+ "" Ok . I'll stay home this morning and rest , but if I feel better in the afternoon , I'm going to the meeting . ""
+ "" Zach , what's that on your arm ? ""
+ "" I don't know . It looks a bit red , but I'm sure it's nothing . ""
+ ' It looks like you have a red rash all over you ! Are you allergic to anything ? '
+ "" Just cats , but I don't think I was near any cats in the last couple of weeks . ""
+ "" I completely forgot about your cat allergy . I took care of a cat for my friend here a few days ago . Oh no . we'd better go to the doctor and get some medicine . Let's go . ""
+ "" Shouldn't we make an appointment first ? ""
+ "" We would , but let's just go and see if there's an opening now before it gets worse . ""
+ ' Whatever you say . I just want to get to my meeting ! ']",17348.0,0.021166563034057617,3.056497097015381
+8,Did I help you to cook last time?,"No, but I said that you would cook next time",qa.csv,"No, I don't recall us cooking together before. Our conversation was actually about food, specifically about a dining experience where you had a problem with your steak being overcooked and then we talked about someone named Saliva who was cooking steamed fish and other dishes."," - ['Excuse me , I ordered the well-done steak , but this one is so tough . '
+ ' Well , sir , I think I have made a mistake . I will take it back to the kitchen right now . '
+ ' I think you should be more careful next time . '
+ "" Yes , sir . I'm really so sorry about that . ""]
+
+ - [""There's plenty left . Would you like another helping ? ""
+ "" I'd like to have some more . It's really good . ""]
+
+ - [""Good evening , Saliva . What's that wonderful aroma from your kitchen ? What are you doing now ? ""
+ ' I am cooking now ! ' ' Are you good at cooking ? '
+ ' I have studied its skills recently at a training school . I plan to run a restaurant , so I have to practise cooking ! '
+ ' It is a good idea . What dish are you cooking now ? ! '
+ ' I am steaming fish in a pressure cooker . Have you ever tried steamed fish ? '
+ ' Yes , I have . But the taste of steamed fish at that restaurant is not delicious . The fish is not well-done and too salty . '
+ "" That's the case . I think there is not enough time to steam it and soy sauce is too much . ""
+ ' I have the same idea as yours . '
+ "" It's OK . Please have a taste of it . ""
+ "" Thank you . Oh , it's very delicious . ""
+ ' Thank you for your praise . '
+ ' Besides steamed fish , what else are you good at cooking ? '
+ ' I am good at stewing beef with potato , frying chicken , hot and sour soup etc . '
+ ' So many dishes . Next Friday week is my birthday . I would like to invite you to cook for my dinner party , OK ? '
+ ' Why not ? It is a good opportunity for me to practise cooking . '
+ ' Thanks a lot . ' "" It's my pleasure . ""]",17246.0,0.02240753173828125,1.714263916015625
+9,Did you know that Kara and Mike were on a date on the movies?,"Yeah, but she refused another date in a REALLY straight forward manner ",qa.csv,"Yes, I did. They mentioned having gone to the movies together the previous night and Mike asked Kara if she'd like to go out again this Friday. It seems like they've been spending some quality time together."," - ['Hello , this is Mike , Kara . '
+ ' Mike ! Good to hear from you . How are you ? '
+ ' Everything is fine , and how are you ? '
+ ' Things are going well with me . '
+ ' Kara , I had fun the other night at the movies and was wondering if you would like to go out again this Friday . '
+ "" Mike , I don't think that it's a good idea to go out again . I really need to focus on getting packed and ready to move back home . ""
+ ' Maybe we could just meet for coffee or something . '
+ "" I can't really deal with any distractions right now , but I appreciate the nice evening we spent together . ""]
+
+ - ['Do you think they two will get married ? '
+ ' Yeah , you can count on it . '
+ ' I think so . Yes , they get along so well . '
+ "" I like him . He's good for her . "" "" You're right . He sure is . ""]
+
+ - ['Jack wonders whether Linda likes him or not . '
+ "" Why doesn't he ask her ? "" ' He is too scared to ask her . '
+ "" He's a chicken guy . ""]",17202.0,0.0210878849029541,1.3912084102630615
+10,"Last time, I asked to change the date of my hotel room reservation frmo one date to another. What dates were those?",24th and 28th,qa.csv,You changed the date from the 24th to the 28th.," - ['Sun-set hotel . May I help you ? '
+ "" Yes , I have booked a room for 24th . It's a double room . ""
+ "" Hold on , please . Let me check it for you . Yes , you're right . You will keep it for 3 days . ""
+ ' Well , now I want to change the date from 24th to 28th . '
+ ' OK , that shall be arranged . ']
+
+ - ['Reservation , can I help you ? '
+ ' Yes , I would like to reserve a room for next Monday . '
+ ' Wait a moment , please . Let me check it . '
+ ' By the way , I want a large room . '
+ ' Right now we have a suite for 4 people , do you want to book it ? '
+ "" Yes , that's what I am looking for . I will take the room for 2 days . ""]
+
+ - ['Hi there , I want to reserve a hotel room . '
+ ' No problem at all . Could I have your full name , please ? '
+ ' Sure , John Sandals . '
+ "" Hi , Mr . Sandals . I'm Michelle , at your service . When do you need the room ? ""
+ ' My plans are to be there April 14th to the 17th . '
+ ' We have new room rates , sir . Will that be acceptable to you ? '
+ ' Well , it depends on the price , of course . What is it ? '
+ "" It's $ 308 a night . "" ' I have no problem with that . '
+ ' Great ! Would you prefer smoking or nonsmoking ? '
+ "" Definitely nonsmoking . I can't handle that smell . ""
+ ' Nonsmoking . Now , is a queen-size bed okay ? ' ' No problem . '
+ ' Great , Mr . Sandals . Your reservation is confirmed . Now all I need is your phone number . '
+ "" Of course ! It's area code 626-555-1739 . ""
+ ' Thank you so much , Mr . Sandals . We look forward to seeing you ! ']",17262.0,0.022796630859375,0.5608408451080322
+11,Our manager arrive tomorrow morning?,Yes,qa.csv,Alguém tem que ir buscar o chefe no aeroporto.," - ['Are you busy tomorrow morning ? ' "" I'm free . What's up ? ""
+ ' Someone has to pick up the boss at the airport . '
+ "" Oh , I just remembered I've got a report to write . ""]
+
+ - [""I should tell you that I'm checking out in about 30 minutes . ""
+ "" I'm ready when you are , sir . ""
+ "" Very good ! Now , it's still morning here in New York . ""
+ ' You are so right , sir . The clock just struck nine . '
+ "" I'm going to spend some time exploring the city . What can I do with my luggage ? ""
+ ' Sir , right here we have a storage site . Its only $ 5 an hour , but you need to leave a deposit . '
+ "" A deposit ? Isn't my luggage a deposit ? ""
+ "" I'm sorry , sir , but it isn't . Your MasterCard or VISA will take care of things nicely . ""
+ ' Okay . Let me think about this . '
+ "" Okay , sir . But don't take too long . You only have 30 minutes . ""]
+
+ - ['Good morning , sir . Sorry to disturb you . May I make up the room now ? '
+ "" Yes , please . We're on our way out , so we put the ' make up ' sign on . Could you bring us some towels and hangers ? ""
+ ' No problem , sir . Everything will be ready when you come back . ']",17222.0,0.021501541137695312,0.5374419689178467
+12,At what time did we make a reservation in the restaurant last time? That time when I was late by 10 minutes and you got angry,six thirty,qa.csv,Eu não tenho registro de uma conversa anterior sobre uma reserva em um restaurante. Eu apenas tenho registros das nossas conversas atuais sobre reservas de quartos. Posso ajudar com alguma outra coisa?," - ['Reservation , can I help you ? '
+ ' Yes , I would like to reserve a room for next Monday . '
+ ' Wait a moment , please . Let me check it . '
+ ' By the way , I want a large room . '
+ ' Right now we have a suite for 4 people , do you want to book it ? '
+ "" Yes , that's what I am looking for . I will take the room for 2 days . ""]
+
+ - ['Good afternoon , sir . Have you made a reservation ? '
+ ' I am afraid not . Are there any vacant tables ? '
+ "" I don't think so . You have to wait for about 10 minutes . ""
+ "" That's all right . ""]
+
+ - ['Sun-set hotel . May I help you ? '
+ "" Yes , I have booked a room for 24th . It's a double room . ""
+ "" Hold on , please . Let me check it for you . Yes , you're right . You will keep it for 3 days . ""
+ ' Well , now I want to change the date from 24th to 28th . '
+ ' OK , that shall be arranged . ']",17214.0,0.022320032119750977,1.5140390396118164
+13,What was the name of the book store where i did buy 'The man and the Sea'?,Nani Book Store,qa.csv,You bought 'The Man and the Sea' at Nani Book Store.," - ['Nani Book Store . How can I help you ? '
+ "" Do you have the ' The man and the Sea ' by Ernest Hemingway ? ""
+ ' Yes , we have one copy left . ' ' Can you hold it for me ? ']
+
+ - [""Excuse me . I am looking for a book called Little Women , but I can't find it anywhere . ""
+ ' Let me see . I am sorry we just have sold it out . '
+ ' Will you have it later ? '
+ ' I think so . Could I have you name , telephone number ? If we get one , I will call you . '
+ "" That's terrific . Thank you . ""]
+
+ - ['Can I help you , sir ? ' "" Yes , I'd like a book about law . ""
+ ' Would you tell me the name of the book and the author ? '
+ "" Uh , the Origin of Law . And it's written by Professor Felix of Harvard . ""
+ "" I'm sorry . It's out of stock now . Could you come by again next week ? ""
+ ' Next week ? It is too late . I need it urgently . '
+ ' Well , then , is it convenient to leave your phone number so that I can inform you as soon as we restock it ? '
+ ' No , thanks any way . ' "" You're welcome . ""]",17222.0,0.021258115768432617,0.537341833114624
+14,Maps of downtown area are free?,Yes,qa.csv,"Sim, os mapas da área central são gratuitos."," - ['Do you have maps of downtown area ? ' ' Yes , here you are . '
+ ' How much is it ? ' "" It's free of charge . "" ' Thanks so much . ']
+
+ - ['Excuse me . can you tell me where Main Street is ? '
+ ' Turn left at the second light and then go straight for two blocks . '
+ ' Is it far ? '
+ ' No . it ’ s only five minutes walk . you can ’ t miss it . '
+ ' Thanks a lot ' ' You are welcome ']
+
+ - ['Excuse me . Can you tell me how to get to City Hall ? '
+ "" Yes . Go to the next corner and turn left onto Center Street . Walk three blocks to Second Avenue and turn right . Walk two more blocks and you'll see City Hall on the left . ""
+ "" I'm sorry . I didn't follow you . Could you please repeat that ? ""
+ ' Okay . First , go to the next corner and turn left onto Center Street . '
+ ' Uh-huh . '
+ ' Then , walk three blocks to Second Avenue an turn right . Are you with me so far ? '
+ "" Yes . I'm following you . ""
+ ' Then , walk two more blocks an you ’ ll see City Hall on the left . Have you got all that ? '
+ "" Yes . Now I've got it . Thank you very much . ""]",17222.0,0.020915985107421875,0.44367480278015137
+15,Did you know that Mr.Sandals spent more than 300 dollars per night in a hotel?,"Yeah, it was in April",qa.csv,"Yes, I remember. According to our conversation, Mr. Sandals was quoted a rate of $308 per night for his hotel room during his stay in New York from April 14th to 17th."," - [""Hello , I'd like to reserve a hotel room . ""
+ ' That should be no problem . May I have your full name , please ? '
+ ' My name is John Sandals . '
+ ' Hello , Mr . Sandals . My name is Michelle . What days do you need that reservation , sir ? '
+ "" I'm planning to visit New York from Friday , April 14 until Monday , April 17 . ""
+ ' Our room rates recently went up . Is that okay with you , Mr . Sandals ? '
+ ' How much per night are we talking about ? '
+ ' Each night will be $ 308 . ' ' That price is perfectly acceptable . '
+ ' Wonderful ! Do you prefer a smoking or nonsmoking room ? '
+ ' Nonsmoking , please . ' ' Next question , Is a queen-size bed okay ? '
+ ' That sounds fine . '
+ ' Okay , Mr . Sandals . Your reservation is in our computer . All we need now is a phone number . '
+ ' Certainly . My phone number is 626-555-1739 . '
+ ' Thank you , Mr . Sandals . We look forward to seeing you in New York ! ']
+
+ - ['Hi there , I want to reserve a hotel room . '
+ ' No problem at all . Could I have your full name , please ? '
+ ' Sure , John Sandals . '
+ "" Hi , Mr . Sandals . I'm Michelle , at your service . When do you need the room ? ""
+ ' My plans are to be there April 14th to the 17th . '
+ ' We have new room rates , sir . Will that be acceptable to you ? '
+ ' Well , it depends on the price , of course . What is it ? '
+ "" It's $ 308 a night . "" ' I have no problem with that . '
+ ' Great ! Would you prefer smoking or nonsmoking ? '
+ "" Definitely nonsmoking . I can't handle that smell . ""
+ ' Nonsmoking . Now , is a queen-size bed okay ? ' ' No problem . '
+ ' Great , Mr . Sandals . Your reservation is confirmed . Now all I need is your phone number . '
+ "" Of course ! It's area code 626-555-1739 . ""
+ ' Thank you so much , Mr . Sandals . We look forward to seeing you ! ']
+
+ - ['Lili , let ’ s take a vacation ! '
+ ' George , how can we ? Vacations cost money . And this month we don ’ t have much money left after paying the rent . '
+ ' Well , Lili , we can visit different places in the state in our van 10 . We are not going to take a plane or stay at a hotel this time . Trust me , it won ’ t cost much . '
+ ' Where will we sleep , then ? ' ' In the van . '
+ ' What about other expenses ? '
+ ' Let ’ s see . Gas , food , recreation , we won ’ t spend much . Come on . Don ’ t hesitate . We need to get out of the house once in a while . We have been working hard , haven ’ t we ? '
+ ' Maybe you ’ re right . When do you plan to go ? '
+ ' The sooner the better ! I can ’ t wait ! '
+ ' Oh , I don ’ t know where we ’ re going yet . '
+ ' As long as we ’ re going , you can decide where to go . I trust your judgments . I know you miss Chinese food , so we can eat at a Chinese restaurant this time . '
+ ' Let ’ s go to Chicago.We can have lunch in Chinatown.Then we can go to a ball game at Wrigley Field ! '
+ ' You have such good ideas ! ']",17348.0,0.02173447608947754,1.4461770057678223
+16,What was the value that I was charged twice in the same bill?," ""6.5 dollar""",qa.csv,You were charged $6.50 (not 6.5) twice for the same thing.," - ['Could I have my bill , please ? ' ' Certainly , sir . '
+ "" I'm afraid there's been a mistake . ""
+ "" I'm sorry , sir . What seems to be the trouble ? ""
+ ' I believe you have charged me twice for the same thing . Look , the figure of 6.5 dollar appears here , then again here . '
+ "" I'll just go and check it for you , sir . ""]
+
+ - ['How may I help you ? ' ' I ’ m having a problem . '
+ ' What problem are you having ? '
+ ' There have been charges made on my debit card that I didn ’ t make . '
+ ' Do you have the statement for your card ? ' ' Here it is . '
+ ' What are the charges you ’ re referring to ? '
+ ' The last four charges on the page . '
+ ' I ’ m afraid we ’ re going to have to investigate these charges . '
+ ' How long will an investigation take ? '
+ ' I honestly don ’ t know , but we will freeze payment on these charges . '
+ ' That sounds absolutely fantastic . ']
+
+ - ['I have to check out now . My name is Ruth Carson . Can I have my bill , please ? '
+ "" Yes , it's $ 167 . "" ' Thank you . ']",17222.0,0.021332979202270508,0.6874511241912842
+17,I don't like holes! Especially in my sheets!,I am sorry.,qa.csv,"I completely understand. Holes in your sheets can be quite frustrating. You were saying something about finding a hole in a sheet you just bought? The store offered to exchange it for a new one, which was very kind of them. Did you end up taking advantage of their offer?"," - ['Good evening , madam . Can I help you ? '
+ ' Yes . I bought this sheet here yesterday . '
+ ' Anything wrong with it ? '
+ ' Yes . When I spread it out back home , I found this hole . '
+ ' Oh , how awful ! May I have a look at the invoice ? ' ' Here it is . '
+ "" Well . please accept our sincere apologies , I'll be glad to change it for another one if you wish . ""
+ "" That's very kind of you . Thank you . ""
+ "" We're sorry that this has happened , and I guarantee that the same mistake won't happen again . ""]
+
+ - ['Look ! I bought these shoes only three weeks ago and there is a hole in them already . '
+ ' If that happen to me , I ’ ll take them back to the shop . '
+ ' I did . But they said they won ’ t change them . '
+ ' That ’ s terrible . But if they wouldn ’ t change them , I know what I would do . ']
+
+ - ['Is there anything I can do for you ? '
+ ' Would you please show me that mural ? ' ' Certainly . Here you are . '
+ ' It looks so beautiful . How much is it ? ' ' Four hundred yuan . '
+ "" That's a bit more than I wanted to pay . Can you cut the price down a bit ? ""
+ "" I'm sorry . Ours is a fixed price shop and I can assure you this is the best price you can get for a mural like this . ""
+ "" Maybe you are right . OK , I'll take it . ""
+ "" Well , I'll have it wrapped for you . ""
+ ' Thank you . Here is four hundred yuan . '
+ ' Thank you . Please come again . ']",17230.0,0.0207669734954834,1.8421270847320557
+18,My wife liked your roses!,Thanks sir!,qa.csv,That's great to hear. I'm glad they were able to bring a smile to her face. Did you find them to be a good value at $20 a dozen?," - [""Henry married Rose only after her father's money , didn't he ? ""
+ ' Yeah . But he soon feel regretted for it . '
+ ' But he seems to be very happy with Rose . '
+ ' He is more nice than wise . ']
+
+ - ['Hello sir , how may I help you ? '
+ ' I would like to buy some flowers , please . Something really nice . '
+ ' I see , may I ask what the occasion is ? '
+ ' It ’ s not really an occasion , it ’ s more like I ’ m sorry . '
+ ' Very well.This arrangement here is very popular among regretful husbands and boyfriends . It has a dozen long stem red roses with a couple of sunflowers and a single orchid that stands out . It includes a small teddy bear to achieve the effect of immediate forgiveness . '
+ ' I think I ’ m gonna need more than just a dozen red roses and a bear . What else do you recommend ? '
+ ' Mmm , well this is our I ’ m sorry I cheated on you package . Two dozen red roses lined with tulips , carnations and lilies . The fragrance and beauty of this flower arrangement is sure to make her forgive you . '
+ ' I don ’ t think that ’ s gonna cut it . I need something bigger and better ! '
+ ' I ’ m sorry sir but , what exactly did you do ? '
+ ' Well , I may have accidentally insinuated that she is getting chubbier . '
+ ' Get out of my store , you jerk ! ']
+
+ - ['I need to buy some flowers for my wife . '
+ "" Perhaps you'd be interested in red roses . ""
+ ' What would the roses cost me ? ' "" They're only $ 20 a dozen . ""
+ ' I like the sound of that . ' "" Yes , that is today's sale price . ""
+ ' A dozen will be fine . ' "" Is there anything else you'd like to get ? ""
+ ' No , thank you . ' ' These roses should make your wife very happy . ']",17244.0,0.020490407943725586,1.1661784648895264
+19,Room service is usually that bad?!,"No, i am sorry",qa.csv,"You've had a bit of a rough experience with the room service so far. It seems they're having some issues with the outlets in your room and now you're asking if room service is usually this bad. To be honest, every hotel has its ups and downs, but it sounds like they might be having a bit of an off day. Hopefully, things will turn around soon!"," - ['Room service , is there anything I can do for you ? '
+ ' Yes , I am afraid there are not enough outlets . '
+ ' Well , we have 6 for each room . '
+ ' Yes , but 4 of them are broken . Can you send someone here ? '
+ ' OK sir , please wait a minute . ']
+
+ - ['Room service.What can I do for you ? '
+ "" l am afraid there isn't any fancy soap in my room . ""
+ ' Sorry sir , we will bring you one.Anything else ? '
+ ' Yes.Bring me a bath towel as well . ']
+
+ - ['Room service . '
+ "" Good morning . This is room 113 . I'd like some breakfast , please . ""
+ ' Right . Excuse me . Mrs . Jones ? ' "" That's right . ""
+ ' What can I do for you ? '
+ "" I'd like some grapefruit juice , marmalade , two scrambled eggs with two sausages , toast , and a pot of black coffee , please . How long will it take ? ""
+ "" Just a few minutes , ma'am . "" ' Great . Thank you . ']",17202.0,0.020673751831054688,2.4309937953948975
+20,Should I speed up or slow down when I see a red light?," ""DO NOT SPEED UP!""",qa.csv,"You definitely should slow down. When you see a red light, it means you need to come to a complete stop before proceeding with caution. Speeding up at a red light is actually against the rules and can be very dangerous. As you mentioned earlier, you learned that yellow means slow down, not speed up. It's always best to err on the side of caution and slow down or come to a complete stop when approaching a red light."," - [""Why'd you pull me over ? ""
+ ' Are you aware that you drove through a red light ? '
+ ' I ran a red light ? ' ' Yes , you did . '
+ "" I apologize , but I didn't realize that I did . ""
+ "" Weren't you taught that yellow means slow down , not speed up ? ""
+ ' I did learn that . ' ' So , then why did you speed up ? '
+ "" I don't know what to tell you . ""
+ "" I'm going to have to write you a ticket . "" ' I understand . '
+ "" Here you go . Don't do that again . ""]
+
+ - ['how long will it take us to drive to London ? '
+ ' I think it ’ s a distance of 180 kilometers from here to London , so it should be a two-hour drive on the motorway . '
+ ' that ’ s unless there is a traffic jam . It could take three hours . '
+ ' you ’ re right . We will be able to travel at high speeds at the beginning and end of the journey , because we will be in built-up areas . '
+ ' so , shall we allow three hours to cover the distance ? '
+ ' ok . You haven ’ t seen my company car , have you ? '
+ ' no . let me take a look ... it ’ s longer than my car . '
+ ' I think it ’ s over five meters long . I can ’ t remember exactly . It has a maximum speed of over 200 kilometers an hour . '
+ ' wow ! That ’ s fast ! I don ’ t think we will be traveling that fast on the motorway . '
+ ' we can ’ t . if we went that fast , we would break the speed limit . ']
+
+ - ['May I ask a question ? ' "" Yes , what's it ? ""
+ ' What does mph stand for ? ' "" It's miles per hour . ""]",17230.0,0.02132105827331543,2.814890146255493

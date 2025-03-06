@@ -6,7 +6,17 @@ import faiss
 import time
 from faiss import read_index
 from sentence_transformers import SentenceTransformer
+import yake
+from rake_nltk import Rake
+from transformers import PegasusForConditionalGeneration, PegasusTokenizer
+from transformers import BartForConditionalGeneration, BartTokenizer
+import nltk
 
+def download_punkt():
+    try:
+        nltk.data.find('tokenizers/punkt_tab')
+    except LookupError:
+        nltk.download('punkt_tab')
 
 def _get_files(file: dict):
     try:
@@ -51,8 +61,7 @@ class SentenceRetriever:
 
     def retrieve(self, query, verbose: bool = False):
         t = time.time()
-        query_vector = self.model.encode([query])
-
+        
         # TODO: talvez aqui seria bom implementar algo que ao detectar índices próximos com mesmo "id" ele retorna os border antes do menor índice e border após o maior índice.
         def check_closeness(idx: list[int]):
             for i in range(len(idx)):
@@ -62,7 +71,7 @@ class SentenceRetriever:
 
             return idx
 
-        def search_in_index():
+        def search_in_index(query_vector):
             search_items = self.data_chunks.search(query_vector, (2 * self.borders + 1) * self.top_k)
             top_k_ids_text = search_items[1][0]  # retorna [(dist, ), (ids, )]
 
@@ -73,11 +82,69 @@ class SentenceRetriever:
 
             return [self.fetch_conversation(self.df_data, idx) for idx in top_k_ids[: self.top_k]]
         
-        def get_theme_of_query():
+        # default -> theme_of_query = query
+        def get_theme_of_query(option='default'):
+            
+            #Todas as alternativas abaixo possuem costumização de parâmetros que podem ser úteis
+            
+            # pega palavras chaves usando yake, solução simples e de baixo custo computacional
+            def theme_from_yake():
+                 # somente top=3 pq o texto é pode ser muito pequeno
+                extractor = yake.KeywordExtractor(lan="en", n=3, dedupLim=0.9, top=3)
+                return " ".join([ keyword for keyword, _ in extractor.extract_keywords(query)])
+            
+            # o mesmo que o yake, pouco mais custoso e resultado (teoricamente) melhor em extração de palavras-chave
+            def theme_from_rake():
+                try:
+                    download_punkt() # se já existir, não faz nada
+                    rake = Rake()
+                    rake.extract_keywords_from_text(query)
+                    print(f'len of keyword list = {len(rake.get_ranked_phrases())}')
+                    return " ".join([ keyword for keyword in rake.get_ranked_phrases()])
+                except Exception as e:
+                    print("Error: ", str(e))
+                    traceback.print_exc()
+                    
+            # especializado em sumarização extrema, baseado em transformer (pesado)
+            def theme_from_pegasus():
+                try:
+                    model_name = "google/pegasus-xsum"
+                    tokenizer = PegasusTokenizer.from_pretrained(model_name)
+                    model = PegasusForConditionalGeneration.from_pretrained(model_name)
+                    tokens = tokenizer(query, truncation=True, padding="longest", return_tensors="pt")
+                    theme_tokens = model.generate(**tokens)
+                    return tokenizer.decode(theme_tokens[0], skip_special_tokens=True)
+                except Exception as e:
+                    print("Error: ", str(e))
+                    traceback.print_exc()
+                    
+            # BERT + GPT -> faz outras coisas, porém é bom pra sumarização. Alternativa mais pesada.
+            def theme_from_bart():
+                try:
+                    model_name = "facebook/bart-large-cnn"
+                    tokenizer = BartTokenizer.from_pretrained(model_name)
+                    model = BartForConditionalGeneration.from_pretrained(model_name)
+                    tokens = tokenizer(query, truncation=True, padding="longest", return_tensors="pt")
+                    theme_tokens = model.generate(**tokens)
+                    return tokenizer.decode(theme_tokens[0], skip_special_tokens=True)
+                except Exception as e:
+                    print("Error: ", str(e))
+                    traceback.print_exc()
+                    
             theme_of_query = query
+            if option == 'yake':
+                theme_of_query = theme_from_yake()
+            elif option == 'rake':
+                theme_of_query = theme_from_rake()
+            elif option == 'pegasus':
+                theme_of_query = theme_from_pegasus()
+            elif option == 'bart':
+                theme_of_query = theme_from_bart()
+            
             return self.model.encode([theme_of_query])
 
         # olhar também aleatoriamente uma % muito pequena da nossa memória
+        # Não melhora significativamente o resultado e fica grande demais pra ler e validar
         def get_rand_sample():
             if self.rand_sample_percent <= 0.0:
                 return []
@@ -86,8 +153,8 @@ class SentenceRetriever:
         
         try:
             if self.df_data is not None:
-                results = search_in_index()
-                #results = list(set(search_in_index()) | set(get_rand_sample())) # Não melhora significativamente o resultado e fica grande demais pra ler e validar
+                # mantendo o padrão de busca em vizinhança do tema/query
+                results = search_in_index(get_theme_of_query('bart')) 
 
         except Exception as e:
             print("Error: ", str(e))
