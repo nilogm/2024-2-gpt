@@ -51,7 +51,7 @@ seaborn = "^0.13.2"
 ipdb = "^0.13.13"
 
 [tool.poetry.scripts]
-exec = "gpt_2024_2.cli:_exec_run"
+gpt = "gpt_2024_2.cli:_exec_run"
 
 [build-system]
 requires = ["poetry-core"]

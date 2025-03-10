@@ -1,5 +1,6 @@
-dialog,act,emotion,id
-"['Hey man , you wanna buy some weed ? ' ' Some what ? '
+dialog,act,emotion,conversation_id
+"['Hey man , you wanna buy some weed ? '
+ ' Some what ? '
  ' Weed ! You know ? Pot , Ganja , Mary Jane some chronic ! '
  ' Oh , umm , no thanks . '
  ' I also have blow if you prefer to do a few lines . '
@@ -9,7 +10,8 @@ dialog,act,emotion,id
  ' I got my connections ! Just tell me what you want and I ’ ll even give you one ounce for free . '
  ' Sounds good ! Let ’ s see , I want . ' ' Yeah ? '
  ' I want you to put your hands behind your head ! You are under arrest ! ']",[3 2 3 4 3 4 3 2 3 4 2 3],[0 6 0 0 0 0 0 0 0 0 3 0],0
-"['The taxi drivers are on strike again . ' ' What for ? '
+"['The taxi drivers are on strike again . '
+ ' What for ? '
  ' They want the government to reduce the price of the gasoline . '
  ' It is really a hot potato . ']",[1 2 1 1],[0 0 0 0],1
 "[""We've managed to reduce our energy consumption in our factory by about 15 per cent in the last two years . ""
@@ -28,7 +30,8 @@ dialog,act,emotion,id
  ' Well , have you ever heard of Oulong tea and compressed tea ? '
  "" Oh , yeah . Oulong tea is good for one's health . isn't it ? ""
  ' You surely know a lot about Chinese tea . '
- ' Sure , I like drinking tea at teahouses . ' ' Oh , so do I . '
+ ' Sure , I like drinking tea at teahouses . '
+ ' Oh , so do I . '
  "" Why don't we go for one now ? ""
  ' Great . We can chat while enjoying a cup there . ' "" Let's go ! ""]",[1 1 1 1 2 2 2 2 1 1 1 3 4 3],[0 0 0 0 0 0 0 0 0 4 0 0 4 4],3
 "['What are your personal weaknesses ? '
@@ -48,12 +51,17 @@ dialog,act,emotion,id
  ' I think it ’ s over five meters long . I can ’ t remember exactly . It has a maximum speed of over 200 kilometers an hour . '
  ' wow ! That ’ s fast ! I don ’ t think we will be traveling that fast on the motorway . '
  ' we can ’ t . if we went that fast , we would break the speed limit . ']",[2 1 1 1 3 3 4 1 3 4],[0 0 0 0 0 0 0 0 0 0],5
-"['So how did I do on my driving test ? ' ' Do you want the truth ? '
- ' Of course , I do . ' "" Well , you really didn't do all that well . ""
+"['So how did I do on my driving test ? '
+ ' Do you want the truth ? '
+ ' Of course , I do . '
+ "" Well , you really didn't do all that well . ""
  ' How bad did I do ? '
- ' To be completely honest , you failed your test . ' ' How ? '
- ' There were a number of reasons . ' ' What were they ? '
- "" Basically , you just can't drive . "" ' Can I have another try ? '
+ ' To be completely honest , you failed your test . '
+ ' How ? '
+ ' There were a number of reasons . '
+ ' What were they ? '
+ "" Basically , you just can't drive . ""
+ ' Can I have another try ? '
  ' You can take it in a couple weeks . ']",[2 2 1 1 2 1 2 1 2 1 3 4],[0 0 0 0 0 0 0 0 0 0 0 0],6
 "[""Good morning . What's the matter with you ? ""
  ' Good morning , doctor . I have a terrible headache . '

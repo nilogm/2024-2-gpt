@@ -1,0 +1,135 @@
+index,conversation_id,question,good_answer,qa_file,system_answer,rag_context,memory_used,retrieval_time,query_time
+0,1,When were we talking about Microsoft?,March 3rd 2025,qa_09_03_2025.csv,"Nós falamos sobre Microsoft há cerca de 1 mês atrás, em 03/03/2025. Você perguntou se eu era fã da Google ou da Microsoft, e disse que ambas são excelentes tecnologias úteis em muitos aspectos, especialmente por motivos de segurança.","Data: 2025-03-03
+ -  Are you a fan of Google or Microsoft?
+ -  Both are excellent technology they are helpful in many ways. For the security purpose both are super.
+
+Data: 2025-01-28
+ -  I could definitely see that. What were your favorite video games? Jane McGongiai was the game designer behind that study, pretty cool.
+ -  Well I really liked the Nintendo 64 and I also like the original Xbox, it's interesting that I played a Toy Story game back in the day and it wasn't actually Tom Hanks who did the voice but his brother Jim Hanks
+ -  Wow, I'm surprised they have such similar voices. I went the Sega to Playstation route, still rocking the PS4, no Toy Story game though.
+
+Data: 2025-02-03
+ -  Me too, I have lost interest playing before I have lost interest in buy them so I have a backlog of a few games that reminds me  not to buy the next console. It is the more and more popular, 3 billon hours are played on video games each week on Earth. 
+ -  Wow. So much time on games. I guess it's about the same as time spent watching TV.
+ -  Yes, but video are viewed more negatively than TV, that is why you have legislation in some countries limiting the time played by children.",17234.0,2.8528895378112793,1.5041344165802002
+1,1,"I remember you said something about Google once, when was it?",March 3rd 2025,qa_09_03_2025.csv,"Você está se referindo ao dia em que discutimos sobre o uso do Google. Isso foi ontem, quando você disse que todos usam o Google diariamente. Além disso, também lembramos juntos da fundação da empresa em 1998, há alguns dias atrás, no dia 1º de março.","Data: 2025-02-26
+ -  hi, do you use google much?
+ -  Yes, I think it is the most effective search engine. How about you? Do you use gmail?
+
+Data: 2025-03-01
+ -  Hey what's up do use Google very often?I really love the company and was surprised to hear that it was founded back in 1998.
+ -  i think everyone must use it daily! its become ingrained in every day life
+
+Data: 2025-03-03
+ -  Both are excellent technology they are helpful in many ways. For the security purpose both are super.
+ -  I'm not  a huge fan of Google, but I use it a lot because I have to. I think they are a monopoly in some sense. 
+ -  Google provides online related services and products, which includes online ads, search engine and cloud computing.",17216.0,2.752530336380005,1.5080540180206299
+2,1,"You did say something about goats and Google last week, didn't you?",Yes,qa_09_03_2025.csv,"Sim, eu falei sobre isso há uma semana atrás. Você deve estar se referindo ao meu comentário sobre os bois da Google que cortam a grama. Isso foi em 1º de março, quando discutimos sobre a história interessante da Google e seus projetos inovadores.","Data: 2025-03-03
+ -  Google is leading the alphabet subsidiary and will continue to be the Umbrella company for Alphabet internet interest.
+ -  Did you know Google had hundreds of live goats to cut the grass in the past? 
+ -  It is very interesting. Google provide ""Chrome OS"" which is a light weight OS. Google provided a lot of hardware mainly in 2010 to 2015. 
+
+Data: 2025-03-01
+ -  thats funny. The current CEO is Sundar Pichai, i didnt know Larry Page was replaced
+ -  Oh yeah I didn't know that either. I also want to go to google Plex to see the goats who mow their lawn by eating it.
+ -  say what now?? they have that??
+
+Data: 2025-03-01
+ -  Yeah apparently lol! They do that instead of hiring people to mow!
+ -  thats both funny and i guess imaginative. leave it to a huge tech company to employ actual goats!
+ -  Yeah exactly I am sure they are cheaper. One thing I bet they couldn't exploit is fish. I think fish are so cool there is actually a breed of jellyfish that is immortal.",17268.0,2.946077823638916,1.3810184001922607
+3,1,"Last week we were talking about animals, weren't we? Which ones?","Yes. Dogs, cats, goats and rats",qa_09_03_2025.csv,"Sim, lembro disso! Nossa última conversa sobre animais foi há duas semanas atrás, em 19 de fevereiro de 2025. Você estava falando sobre os seus cães e gatos, e eu mencionei que alguns aracnídeos mantêm sapos como animais de estimação. Além disso, você também mencionou que os gatos são úteis para controlar ratos. E antes disso, em 18 de janeiro de 2025, nós discutimos sobre animais também, incluindo tubarões, que podem ser treinados.","Data: 2025-03-03
+ -  Yes. Fish is the important resources of human world wide for the commercial and subsistence fish hunts the fish in the wild fisheries.
+ -  What about cats, do you like cats? I'm a dog fan myself. 
+ -  The cat is referred as domestic cat and wild cat. They make our world very clean from rats! 
+
+Data: 2025-01-18
+ -  That's incredible, they also have a publishing arm known as Amazon publishing for people who want to publish their eBooks through them!
+ -  that is good! Hey, do you like animals?
+ -  I love animals, my favorite is the Shark. Did you know they can be trained just like dogs? Talk about man's best friend.
+
+Data: 2025-02-19
+ -  Now that I had no idea of.  Did you know that some tarantulas keep frogs as pets?
+ -  Wow, that's odd. Two of the most popular pets are dogs and cats
+ -  I have dogs and used to have cats too but dogs are my favorite.  ",17270.0,2.4896111488342285,2.7207517623901367
+4,2,"Have I told you that Bruce Lee was a dancer? If so, when?","Yes, last week, March 2nd 2025",qa_09_03_2025.csv,"Sim, você já me disse sobre Bruce Lee ser um dançarino. Isso foi em várias ocasiões diferentes. Em primeiro lugar, foi ontem, quando você disse que ele era um grande dançarino. Além disso, você também mencionou isso anteriormente, em 27 de fevereiro, e novamente em 2 de março.","Data: 2025-02-28
+ -  I am really bad, but it is a good time.
+ -  Dancing is a lot of fun. Did you know that Bruce Lee was a great dancer?
+ -  I heard that, winning Cha Cha championships and everything!
+
+Data: 2025-02-27
+ -  do you like dance?
+ -  I love it. Did you know Bruce Lee was a dancer?
+ -  Yes he even won a cha cha championship in 1958
+
+Data: 2025-03-02
+ -  do you like dance?
+ -  Yes  I do. Did you know Bruce Lee was a cha cha dancer?
+ -  Yes he even won a hardcore cha cha championship in 1958",17202.0,2.6242377758026123,1.622741937637329
+5,2,What did I tell you Bruce Lee danced?,Cha cha,qa_09_03_2025.csv,Você me disse que Bruce Lee era um dançarino incrível e que ele até mesmo ganhou um campeonato de Cha Cha em 1958! Você também mencionou que ele foi um grande dançarino e que até ganhou um campeonato de Cha Cha hardcore em 1958.,"Data: 2025-02-27
+ -  do you like dance?
+ -  I love it. Did you know Bruce Lee was a dancer?
+ -  Yes he even won a cha cha championship in 1958
+
+Data: 2025-02-28
+ -  I am really bad, but it is a good time.
+ -  Dancing is a lot of fun. Did you know that Bruce Lee was a great dancer?
+ -  I heard that, winning Cha Cha championships and everything!
+
+Data: 2025-03-02
+ -  do you like dance?
+ -  Yes  I do. Did you know Bruce Lee was a cha cha dancer?
+ -  Yes he even won a hardcore cha cha championship in 1958",17204.0,2.8106162548065186,1.3468353748321533
+6,2,Who else that we talked about was a dancer? What did he dance?,Tupac. Ballet,qa_09_03_2025.csv,"Ontem, quando falamos sobre dança, você mencionou que Bruce Lee era um grande dançarino e que ele ganhou campeonatos de Cha Cha. Além disso, no dia anterior, você também disse que eu sou uma pessoa que gosta de dançar.","Data: 2025-02-28
+ -  Hi!  do you like to dance?
+ -  I love to dance a lot. How about you?
+
+Data: 2025-02-28
+ -  I am really bad, but it is a good time.
+ -  Dancing is a lot of fun. Did you know that Bruce Lee was a great dancer?
+ -  I heard that, winning Cha Cha championships and everything!
+
+Data: 2025-02-27
+ -  do you like dance?
+ -  I love it. Did you know Bruce Lee was a dancer?",17240.0,2.461608648300171,1.2653684616088867
+7,2,"We even talked about Michael Jackson, didn't we?",Yes,qa_09_03_2025.csv,"Sim, nós falamos sobre Michael Jackson há pouco tempo atrás. Lembre-se da nossa conversa em 28 de fevereiro, quando você perguntou sobre os sapatos patentes dele. Você lembra disso?","Data: 2025-02-28
+ -  I didn't know this thanks for sharing.
+ -  Sure thing!  Did you hear about Michael Jackson's special patent shoes?
+ -  No. I know that Michael Jackson was a fantastic dancer but can you tell me more about his patent shoes if you don't mind.
+
+Data: 2025-02-14
+ -  Well said! I think it suits me well too haha. That is where the conical party hat was derived from!
+ -  Or maybe we could give it to Mr West next time he wants to speak his mind to us.  
+ -  Or just when he is walking around being the odd self he is. Anyways, I had a great chat with you, have an awesome day!
+
+Data: 2025-03-02
+ -  Yeah they are much smarter than we give them credit for
+ -  True Did you know Jackson had a patent on a dancing device?
+ -  Yes it helped him smooth out his dance moves",17222.0,2.682558536529541,1.0393908023834229
+8,2,"Have you heard of the phrase ""Good riddance, in my heart of hearts and such""? When have you heard that?","Yes, you told me last week, March 2nd 2025",qa_09_03_2025.csv,"Sim, eu sei dessa expressão! Você parece estar se referindo ao fato de que alguém popularizou essa frase. Eu ouvi isso antes, mas não me lembro exatamente quando foi. Mas posso tentar ajudar. Ontem, você disse algo sobre isso, não foi?","Data: 2025-02-27
+ -  I love his work. Did you know he popularized many terms that we use to this day?
+ -  Yes terms like, good riddance, in my heart of heart and such
+ -  Yes. He lives at the same time as Pocahontas did
+
+Data: 2025-03-02
+ -  Yes I do. Do you know that he popularized many phrases
+ -  Yes like good riddance, in my heart of hearts and such
+ -  Yes and then he also invented names like Jessica, Olivia and Miranda
+
+Data: 2025-01-29
+ -  bye
+ -  bye!",17204.0,2.5696005821228027,1.3676495552062988
+9,2,"We were talking about Pocahontas yesterday, weren't we?","No, it was March 2nd 2025",qa_09_03_2025.csv,"Sim, acho que sim! Você estava me perguntando sobre Pocahontas e como seria se John Smith tivesse conhecido ela. Lembra quando você disse que eles viveram na mesma época? Foi há alguns dias atrás, mas eu ainda lembro da nossa conversa interessante sobre isso.","Data: 2025-03-02
+ -  Yes otherwise the rhymes and puns do not seem to work out
+ -  Yes. He lived at the same time as Pocahontas too
+ -  I wonder if they met how that would go from there
+
+Data: 2025-02-07
+ -  I think I would too! Too bad Richard Nixon cracked that 165 year old gavel the senate used. It must be somewhere on display.
+ -  Yeah, that has to be a piece of US history.
+ -  Love the candy desk idea at the senate! Now I'm going to think about them going thru that drawer full of milky ways . mars bars and jelly beans!
+
+Data: 2025-02-27
+ -  Yes terms like, good riddance, in my heart of heart and such
+ -  Yes. He lives at the same time as Pocahontas did
+ -  I wonder if they had met what he would have written about her.",17266.0,2.8975064754486084,1.475278377532959

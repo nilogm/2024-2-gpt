@@ -2,7 +2,7 @@
 
 ## Algumas coisas que faltam implementar:
  - [ ] Adaptar o prompt para incluir noção de tempo
- - [ ] Atribuir datas para as conversas
+ - [x] Atribuir datas para as conversas
  - [ ] Fazer um dataset de perguntas para teste
  - [ ] Adicionar função para recuperar conversas com base na data
  - [ ] Encontrar um método de avaliação
@@ -17,8 +17,8 @@
  - Número de mensagens para retornar antes e depois da mensagem mais similar encontrada
 
 ### Adendos
- - Talvez seja bom fazer embeddings considerando a mensagme anterior e a próxima (ou 2 antes, etc.) para que haja algum tipo de contexto da conversa para uma melhor busca por similaridade.
+ - Talvez seja bom fazer embeddings considerando a mensagem anterior e a próxima (ou 2 antes, etc.) para que haja algum tipo de contexto da conversa para uma melhor busca por similaridade.
 
  ## Comandos
-  - poetry run exec init --encoder-codename="gte"
-  - poetry run exec test --generative-codename="llama" --encoder-codename="gte"
+  - poetry run gpt init --encoder-codename="gte"
+  - poetry run gpt test --generative-codename="llama" --encoder-codename="gte"

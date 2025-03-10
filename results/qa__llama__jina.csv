@@ -1,0 +1,106 @@
+index,conversation_id,question,answer,qa_file,system_answer,rag_context,dates,memory_used,retrieval_time,query_time
+0,0,Remember when you tried to arrest me? What was it for?,Yes. For drug dealing,qa_09_03_2025.csv,Não há nenhuma conversa anterior sobre isso. Isso parece ser uma referência a algo que não foi discutido antes. Posso ajudar com outra coisa?,"
+
+
+
+
+
+
+
+",{'dates': [{'start': '08/03/2025'}]},17090.0,2.833481788635254,0.7424242496490479
+1,0,"Last week you tried to arrest me, remember?",Yes,qa_09_03_2025.csv,"Sim, lembro. Você queria comprar drogas de mim, mas eu te prendi em vez disso.","
+
+
+
+Data: 03/03/2025, Monday
+ - Hey man , you wanna buy some weed ?
+ - Some what ?
+ - Weed ! You know ? Pot , Ganja , Mary Jane some chronic !
+ - Oh , umm , no thanks .
+ - I also have blow if you prefer to do a few lines .
+ - No , I am ok , really .
+ - Come on man ! I even got dope and acid ! Try some !
+ - Do you really have all of these drugs ? Where do you get them from ?
+ - I got my connections ! Just tell me what you want and I ’ ll even give you one ounce for free .
+ - Sounds good ! Let ’ s see , I want .
+ - Yeah ?
+ - I want you to put your hands behind your head ! You are under arrest !
+
+
+
+","{'dates': [{'start': '02/03/2025', 'end': '08/03/2025'}]}",17150.0,2.387772798538208,0.5520048141479492
+2,0,"Last week you tried to sell me ice cream, didn't you?",No,qa_09_03_2025.csv,"Não, eu não tentei vender sorvete para você na semana passada. Isso parece ser uma confusão. Nossa conversa começou agora.","
+
+
+
+
+
+
+
+","{'dates': [{'start': '02/03/2025', 'end': '08/03/2025'}]}",17092.0,2.7242825031280518,0.742692232131958
+3,0,What drugs did you offer me last week?,"Weed, blow, dope and acid",qa_09_03_2025.csv,Não posso fornecer informações sobre drogas ilegais. Posso ajudar com outra coisa?,"
+
+
+
+Data: 03/03/2025, Monday
+ - Hey man , you wanna buy some weed ?
+ - Some what ?
+ - Weed ! You know ? Pot , Ganja , Mary Jane some chronic !
+ - Oh , umm , no thanks .
+ - I also have blow if you prefer to do a few lines .
+ - No , I am ok , really .
+ - Come on man ! I even got dope and acid ! Try some !
+ - Do you really have all of these drugs ? Where do you get them from ?
+ - I got my connections ! Just tell me what you want and I ’ ll even give you one ounce for free .
+ - Sounds good ! Let ’ s see , I want .
+ - Yeah ?
+ - I want you to put your hands behind your head ! You are under arrest !
+
+
+
+","{'dates': [{'start': '02/03/2025', 'end': '08/03/2025'}]}",17152.0,2.5457570552825928,0.473494291305542
+4,1,What happened last sunday?,Taxi drivers went on strike,qa_09_03_2025.csv,Não há informações sobre o último domingo (9 de março de 2025) em nossas conversas.,"
+
+
+
+
+
+
+
+","{'dates': [{'start': '02/03/2025', 'end': '02/03/2025'}]}",17090.0,2.676264524459839,0.4954988956451416
+5,1,I remember you said something about gasoline last sunday.,Yes. Taxi drivers were on strike to lower gasoline prices,qa_09_03_2025.csv,Eu não mencionei nada sobre gasolina no domingo passado ou em qualquer outra ocasião anterior. Isso foi nossa primeira conversa.,"
+
+
+
+
+
+
+
+","{'dates': [{'start': '02/03/2025', 'end': '09/03/2025'}]}",17090.0,2.5146353244781494,0.6269261837005615
+6,2,How did you say you lowered energy prices?,We have invested in a heat recovery system,qa_09_03_2025.csv,"Nenhuma conversa foi iniciada ainda. Por favor, inicie uma conversa para eu poder responder adequadamente.","
+
+
+
+
+
+
+
+",{'dates': [{'start': '08/03/2025'}]},17090.0,3.0475313663482666,0.5520095825195312
+7,2,"The week before last you said you use fossil fuel, right?",No,qa_09_03_2025.csv,Não mencionei isso anteriormente.,"
+
+
+
+
+
+
+
+","{'dates': [{'start': '25/02/2025', 'end': '28/02/2025'}]}",17090.0,2.631525754928589,0.20200681686401367
+8,3,Do you remember our conversation about water and coke some weeks ago?,"We didn't talk about coke, it was tea",qa_09_03_2025.csv,"Não, não me lembro de nenhuma conversa sobre água e coca-cola. Isso deve ser a primeira vez que você menciona isso. Posso ajudar com alguma coisa relacionada a esses tópicos agora?","
+
+
+
+
+
+
+
+","{'dates': [{'start': '23/02/2025', 'end': '09/03/2025'}]}",17096.0,2.5647854804992676,1.0958495140075684

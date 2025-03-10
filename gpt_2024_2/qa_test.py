@@ -22,6 +22,7 @@ def test_qa(model: BrainBot, generative_codename: str, encoder_codename: str, re
         df["system_answer"] = ""
         df["rag_context"] = ""
         df["llm_response"] = ""
+        df["dates"] = ""
         df.drop(columns=["llm_response"], inplace=True)
 
         pbar = tqdm(total=len(df.index))
@@ -31,9 +32,10 @@ def test_qa(model: BrainBot, generative_codename: str, encoder_codename: str, re
 
             row = df.iloc[idx]
             question = row["question"]
-            response, rag_context, memory_used, retrieval_time, query_time = model.ask(question)
+            response, dates, rag_context, memory_used, retrieval_time, query_time = model.ask(question)
 
             df.at[idx, "system_answer"] = response
+            df.at[idx, "dates"] = dates
             df.at[idx, "rag_context"] = rag_context
             df.at[idx, "memory_used"] = memory_used
             df.at[idx, "retrieval_time"] = retrieval_time

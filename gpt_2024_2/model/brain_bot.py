@@ -6,7 +6,7 @@ from typing import Tuple
 from dotenv import load_dotenv
 import gpt_2024_2.context.builder as builder
 from gpt_2024_2.model.gen_model import init_model
-from gpt_2024_2.model.prompts import CHAT_PROMPT, build_message
+from gpt_2024_2.model.prompts import CHAT_PROMPT, build_message, DATE_PROMPT
 from gpt_2024_2.model.retriever import SentenceRetriever
 from gpt_2024_2.utils import get_encoder, get_model
 
@@ -45,7 +45,7 @@ class BrainBot:
             raise ValueError("Generative model cannot be 'None'.")
 
         self.params = kwargs
-        self.params.update(dict(model_id=model_id, encoder_model_id=encoder_model_id, top_k=top_k, init=self.init))
+        self.params.update(dict(model_id=model_id, encoder_model_id=encoder_model_id, top_k=top_k, init=self.init, borders=borders))
 
         self.base_prompt = CHAT_PROMPT
 
@@ -78,7 +78,6 @@ class BrainBot:
     def initialize_model(self, model_id: str, init: bool = False, **kwargs):
         self._terminate_model()
 
-        print(f"Initializing {model_id}...")
         self.model_id = model_id
         self.model_pipeline, self.model, self.tokenizer = init_model(model_id, hf_auth=self.hf_auth, verbose=True, init=init, device_map=self.device)
 
@@ -104,14 +103,10 @@ class BrainBot:
         self.encoder_model_id = encoder_model_id
         self.retriever = SentenceRetriever(encoder_model_id, top_k=top_k, borders=borders, device=self.device)
 
-    def initialize_context(
-        self,
-        verbose: bool = True,
-        **kwargs,
-    ):
+    def initialize_context(self, verbose: bool = True, **kwargs):
         index = dict(encoder_model=self.retriever.model, encoder_model_dimensions=self.encoder_model_dimensions, verbose=verbose)
 
-        main_source = os.path.join("conversations", "dataset")
+        main_source = os.path.join("dataset", "memories_2")
         builder.build_chunks(main_source, self.data["destination"], self.data["key"], verbose=verbose)
         builder.build_index(self.data["corpus"], self.data["index"], **index)
 
@@ -135,26 +130,27 @@ class BrainBot:
         response = sequences[0]["generated_text"]
         return response.strip(), memory_used, et - t
 
-    def format_message(self, message: str, history: list, memory_limit: int = 0) -> Tuple[str, str, float]:
-        results_books, time_retrieval = self.retriever.retrieve(message)
-        text_books = "\n\n".join(results_books)
+    def format_message(self, message: str) -> Tuple[str, str, float]:
+        dates = self.extract_dates(message)
 
-        if memory_limit == 0:
-            history = []
-        elif len(history) > memory_limit:
-            history = history[-memory_limit:]
+        results, time_retrieval = self.retriever.retrieve(message, dates)
+        conversations = "\n\n".join(results)
 
-        prompt = self.base_prompt.format(text_books=text_books)
-        formatted_message = build_message(self.tokenizer, message, history, prompt)
+        prompt = self.base_prompt.format(conversations=conversations, today="09 de março de 2025")
+        formatted_message = build_message(self.tokenizer, message, prompt)
 
-        return formatted_message, text_books, time_retrieval
+        return formatted_message, dates, conversations, time_retrieval
 
-    def ask(self, message: str, history: list[dict] = [], memory_limit: int = 0) -> Tuple[str, str, int, float, float]:
-        print(f"Valor de 'message': {message} (Tipo: {type(message)})")
-        query, rag_context, time_retrieval = self.format_message(message, history, memory_limit)
+    def extract_dates(self, message: str):
+        prompt = DATE_PROMPT.format(today="09/03/2025")
+        formatted_message = build_message(self.tokenizer, message, prompt)
+        dates, _, _ = self._get_response(formatted_message)
+        try:
+            return eval(dates)
+        except:
+            return {"dates": []}
+
+    def ask(self, message: str) -> Tuple[str, str, int, float, float]:
+        query, dates, conversations, time_retrieval = self.format_message(message)
         response, memory_used, time_response = self._get_response(query)
-
-        history.append({"role": "user", "content": message})
-        history.append({"role": "assistant", "content": response})
-
-        return response, rag_context, memory_used, time_retrieval, time_response
+        return response, dates, conversations, memory_used, time_retrieval, time_response

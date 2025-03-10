@@ -1,4 +1,5 @@
 import os
+import torch
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -39,3 +40,24 @@ def get_encoder(encoder_codename: str):
     data_path = __path_check(data_dir)
 
     return encoder_model_id, encoder_model_dimensions, data_path
+
+
+def set_device(device: str):
+    if device is None:
+        print("Setting device='cpu'")
+        return "cpu"
+    elif device == "auto":
+        print("Setting device='auto'")
+        return device
+    try:
+        num = int(device)
+        print(f"Setting device='cuda:{num}'")
+        if torch.cuda.is_available():
+            if torch.cuda.device_count() > num:
+                return f"cuda:{num}"
+            else:
+                raise ValueError(f"Device {num} of cuda is not available.")
+        else:
+            raise ValueError("Cuda device is not available.")
+    except:
+        raise ValueError(f"Unrecognized cuda device number: {device}")
