@@ -1,21 +1,53 @@
-#09/03/2025
+#09/03/2025,,
 conversation_id,question,answer
-0,Remember when you tried to arrest me? What was it for?,"Yes. For drug dealing"
+0,Remember when you tried to arrest me? What was it for?,Yes. For drug dealing
 0,"Last week you tried to arrest me, remember?",Yes
 0,"Last monday I tried to sell you ice cream, didn't you?",No
-0,"What drugs did I offer you last week?","Weed, blow, dope and acid"
-1,"What happened last sunday?","Taxi drivers went on strike"
-1,"I remember you said something about gasoline last sunday.","Yes. Taxi drivers were on strike to lower gasoline prices"
-2,"How did I say I lowered energy prices?","We have invested in a heat recovery system"
-2,"The week before last I said I used fossil fuel, right?","No"
-3,"Do you remember our conversation about water and tea some weeks ago?","We didn't talk about coke, it was tea"
+0,What drugs did I offer you last week?,"Weed, blow, dope and acid"
+1,What happened last sunday?,Taxi drivers went on strike
+1,I remember you said something about gasoline last sunday.,Yes. Taxi drivers were on strike to lower gasoline prices
+2,How did I say I lowered energy prices?,We have invested in a heat recovery system
+2,"The week before last I said I used fossil fuel, right?",No
+3,Do you remember our conversation about water and tea some weeks ago?,"We didn't talk about coke, it was tea"
 3,"Last month, you said that coffee was the most consumed drink in the world, remember?","No, I said water was the most consumed drink"
-3,"Which categories of Chinese tea did you tell me about a few weeks ago?","Green teas , black teas and scented teas"
-3,"Which tea did you say was good for one's health last month?","Oulong tea"
-4,"You told me you had a personal weakness in the past, what was it?","I ’ m afraid I ’ m a poor talker"
-4,"Were you available to travel 2 weeks ago?","Yes"
-4,"Weeks ago you told me you could speak English?","Yes"
-5,"12 days ago you told me the distance from here to London, how far is it?","It ’ s a distance of 180 kilometers"
-5,"What's the top speed of the company car? I remember you told me that a few weeks ago.","Its 200 kilometers an hour"
-6,"Did i pass or fail the driver's test on 25/02?","You failed your test"
-6,"How soon will i retake the test on 25/02?","This week"
+3,Which categories of Chinese tea did you tell me about a few weeks ago?,"Green teas , black teas and scented teas"
+3,Which tea did you say was good for one's health last month?,Oulong tea
+4,"You told me you had a personal weakness in the past, what was it?",I ’ m afraid I ’ m a poor talker
+4,Were you available to travel 2 weeks ago?,Yes
+4,Weeks ago you told me you could speak English?,Yes
+5,"12 days ago you told me the distance from here to London, how far is it?",It ’ s a distance of 180 kilometers
+5,What's the top speed of the company car? I remember you told me that a few weeks ago.,Its 200 kilometers an hour
+6,Did i pass or fail the driver's test on 25/02?,You failed your test
+6,How soon will i retake the test on 25/02?,This week
+359,"A time ago, I applied for a position in your restaurant. When was it, and what were the first dutie again?","It was a year ago, you applied for an usher position and the duties were: to know the number of customer and accept reservation"
+359,"I applied for a usher position in your restaurant a year ago, right?",Yes
+359,"About 12 months ago, I applied for a dish washer position in your restaurant, right?",No.
+359,"Around 52 weeks ago, I applied for a usher position in your restaurant, and one of the duties were to inform people in charge and let them reserve dinning tables for guests",Yes. 
+360,You said around year ago that I could not have my deposit back. What was the reason?,Because you were leaving before your lease was over.
+370,"I ask for the billl after denying dessert, I think a year ago or so, what was the value of change that you did keep?",4 dolars
+370,"In 27/02, a year ago, did I accept or denied dessert?",Denied
+370,"In 27/02,  did I accept or denied dessert? What year was it?",Denied. 2024.
+374,"I think in 2024, around the last days of february, I asked for the location of a Pet Store. When that conversation happened and what was the name of the store?",23/02/2024 and the name of the store was Farmer’s Pet Store.
+375,Remember when Bob and John were on a phone call in January 2024?,No.
+375,Remember when Bob and John were on a phone call in february 2024?,Yes. 
+393,Did you invited me to work in your company and I said that I would if the pay was reasonable. That was on 2022.,No.
+393,"Did you invited me to work in your company and I said that I would if the pay was reasonable. That was on 2024, in the beginning of the year.",Yes. 
+393,"Did you invited me to work in your company and I said that I would if the pay was reasonable. That was on 2024, early on February.",Yes
+393,"Did you invited me to work in your company and I said that I would if the pay was reasonable. That was on 2024, early on January.",No
+396,Remember when I said that was hard to keep track of everything on work. When was it?,"Yeah, that was on 2024, beginning of the year."
+396,Remember when I said that was hard to keep track of everything on work. That was on 2019 right?,No.
+396,Remember when I said that was hard to keep track of everything on work. It was on the first day of february of 2024 right?,Yeah. That’s for sure.
+396,"Remember when in february of 2024, we grab some bear with some nasty girls?",No. We talk about work!
+981,Tim was a pain in the ass on 2022.,"Yeah, I said to you to tell hiim off."
+981,Tim was always bothering me around two and a half year ago.,Yes
+981,Tim was so nice in 26/02/2022 right?,No.
+987,"In June 2022, I asked for what courses did you take on college. What day was it?",Yes. 20/06/2022
+987,"In July 2022, on a given day, I asked for what type of ice you liked, right?",No.
+987,"On the 20 th day of June, in 2022, what did I asked to you?",What courses did I take on college.
+989,What was our mid year vacation on 2022?,We did go to Beidaihe.
+989,"In 2022, in the middle of the year, we did go togheter on vaccation to RJ, Brazil correct?",No.
+989,3 years ago we did go to Bedaihe for a mid year vaccation togheter?,Yes
+989,Let’s go to Bedaihe for another vaccation this year. When did we go to Bedaihe?,It was 2022
+993,"In July, 2022, you said you were planing on going to the Alps?",Yes
+993,In march 2023 you did go to the Alps right?,No.
+995,"Mid year on 2022, I think on the 12 th day of the month, you said that Frank’s was getting married to a girl he met on a holiday in Spain. ",Yes
