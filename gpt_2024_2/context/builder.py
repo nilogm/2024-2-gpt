@@ -18,7 +18,7 @@ def build_chunks(path: str, destination_path: str, key: str, verbose: bool = Fal
         if filename.endswith(".csv"):
             df = pd.read_csv(os.path.join(path, filename))
             df = modify_df(df)
-            df.to_csv("memories_w_dates.csv", index=False)
+            # df.to_csv("memories_w_dates.csv", index=False)
             corpora = pd.concat([corpora, pd.DataFrame({"id": df["conversation_id"], "dialog": df["dialog"], "date": df["date"], "weekday": df["weekday"]})], ignore_index=True)[:1000]
 
     if verbose:

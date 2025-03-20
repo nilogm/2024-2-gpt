@@ -1,0 +1,46 @@
+{
+    "generator_codename": [
+        [
+            "llama",
+            "meta-llama/Llama-3.1-8B-Instruct"
+        ],
+        [
+            "glm",
+            "THUDM/glm-4-9b-chat"
+        ],
+        [
+            "deepseek",
+            "deepseek-ai/DeepSeek-R1-Distill-Llama-8B"
+        ]
+    ],
+    "encoder_codename": [
+        [
+            "gte",
+            "thenlper/gte-large",
+            1024
+        ],
+        [
+            "jina",
+            "jinaai/jina-embeddings-v3",
+            1024
+        ],
+        [
+            "multilingual",
+            "intfloat/multilingual-e5-large-instruct",
+            1024
+        ]
+    ],
+    "top_k": [
+        3,
+        5,
+        7,
+        9
+    ],
+    "summarizer": [
+        "default",
+        "bert",
+        "rake",
+        "yake",
+        "pegasus"
+    ]
+}

@@ -21,31 +21,15 @@ def ragas_semantic(wrapped_llm: LangchainLLMWrapper, wrapped_embeddings: Langcha
     result = evaluate(dataset=ragas_dataset, llm=wrapped_llm, metrics=[SemanticSimilarity(embeddings=wrapped_embeddings), RougeScore(measure_type="recall")], raise_exceptions=True).to_pandas()
     results["semantic_similarity_score"] = result["semantic_similarity"]
     print(f"RAGAS's Semantic Similarity Score: ", result["semantic_similarity"].mean())
-    results["rouge_score"] = result["rouge_score"]
+    results["rouge_score_recall"] = result["rouge_score"]
     print(f"RAGAS's Rouge-L Recall Score: ", result["rouge_score"].mean())
-
-    if "wrong_answer1" in results.columns and results["wrong_answer1"].notna().all():
-        ragas_dataset = to_ragas_dataset(results, "wrong_answer1")
-        result = evaluate(dataset=ragas_dataset, llm=wrapped_llm, metrics=[SemanticSimilarity(embeddings=wrapped_embeddings), RougeScore(measure_type="recall")], raise_exceptions=True).to_pandas()
-        results["semantic_similarity_wa1_score"] = result["semantic_similarity"]
-        print(f"RAGAS's Semantic Similarity Score: ", result["semantic_similarity"].mean())
-        results["rouge_wa1_score"] = result["rouge_score"]
-        print(f"RAGAS's Rouge-L Recall Score: ", result["rouge_score"].mean())
-
-    if "wrong_answer2" in results.columns and results["wrong_answer2"].notna().all():
-        ragas_dataset = to_ragas_dataset(results, "wrong_answer2")
-        result = evaluate(dataset=ragas_dataset, llm=wrapped_llm, metrics=[SemanticSimilarity(embeddings=wrapped_embeddings), RougeScore(measure_type="recall")], raise_exceptions=True).to_pandas()
-        results["semantic_similarity_wa2_score"] = result["semantic_similarity"]
-        print(f"RAGAS's Semantic Similarity Score: ", result["semantic_similarity"].mean())
-        results["rouge_wa2_score"] = result["rouge_score"]
-        print(f"RAGAS's Rouge-L Recall Score: ", result["rouge_score"].mean())
-
-    if "wrong_answer3" in results.columns and results["wrong_answer3"].notna().all():
-        ragas_dataset = to_ragas_dataset(results, "wrong_answer3")
-        result = evaluate(dataset=ragas_dataset, llm=wrapped_llm, metrics=[SemanticSimilarity(embeddings=wrapped_embeddings), RougeScore(measure_type="recall")], raise_exceptions=True).to_pandas()
-        results["semantic_similarity_wa3_score"] = result["semantic_similarity"]
-        print(f"RAGAS's Semantic Similarity Score: ", result["semantic_similarity"].mean())
-        results["rouge_wa3_score"] = result["rouge_score"]
-        print(f"RAGAS's Rouge-L Recall Score: ", result["rouge_score"].mean())
+    
+    result = evaluate(dataset=ragas_dataset, llm=wrapped_llm, metrics=[RougeScore(measure_type="precision")], raise_exceptions=True).to_pandas()
+    results["rouge_score_precision"] = result["rouge_score"]
+    print(f"RAGAS's Rouge-L Precision Score: ", result["rouge_score"].mean())
+    
+    result = evaluate(dataset=ragas_dataset, llm=wrapped_llm, metrics=[RougeScore(measure_type="f1")], raise_exceptions=True).to_pandas()
+    results["rouge_score_f1"] = result["rouge_score"]
+    print(f"RAGAS's Rouge-L F1 Score: ", result["rouge_score"].mean())
 
     return results

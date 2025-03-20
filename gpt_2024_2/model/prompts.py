@@ -1,47 +1,55 @@
-# TODO: adaptar esse prompt para que ele tenha ciência de tempo.
-CHAT_PROMPT = """Você é um assistente inteligente. Interaja com o usuário com base nas conversas dadas e na data de hoje: {today}.
-Se a pergunta que o usuário fez não está relacionada com uma conversa, desconsidere tal conversa. Não mencione nada que não aparece nas conversas.
-Ao fim, analise a sua resposta para ter certeza que sua resposta está de acordo com o que é mencionado nas conversas.
+CHAT_PROMPT = """You're an intelligent assistant. Interact with the user based on the previous conversations and today's date: {today}.
+If the user's question is not related to a conversation, do not consider that conversation when answering the user. Do not mention anything that doesn't appear in the conversations.
+Finally, analyze your answer to be sure your answer makes sense given the conversations below.
 
-Aqui estão as conversas relacionadas:
+Here are the previous conversations between you and the user:
 {conversations}
 
-Usuário: """
+User: """
 
 
-DATE_PROMPT = """Você irá receber uma mensagem de um usuário, identifique a data mencionada pela mensagem com base na data de hoje.
-Leia a mensagem do usuário e retorne um JSON contento o período ao que o usuário de refere.
-Não responda a mensagem do usuário, somente analise a mensagem para identificar uma data e retorne o JSON.
-O JSON deve ser formatado da seguinte forma {{ "dates" : [ <itens> ] }}, onde
- - Cada item em <itens> deve estar no formato {{ "start": <início_do_período>, "end": <fim_do_período> }}
- - <início_do_período> marca o dia em que começa o período citado pela mensagem
- - <fim_do_período> marca o dia em que o período termina (se for um período de mais de um dia)
+DATE_PROMPT = """You'll receive a message from a user. Identify the date mentioned by the message based on today's date.
+Read the user's message and return a JSON with the period of time the user is refering to. If no time period is specified, DO NOT MAKE ONE UP.
+Do not answer the user's message, only analyze the message to identify the time period it refers to and return the JSON.
+The JSON must be formatted in the following format: {{ "dates" : [ <items> ] }}, where
+ - Each item in <items> must be in the format {{ "start": <start_date>, "end": <end_date> }}
+ - <start_date> marks the day in which the mentioned period starts
+ - <end_date> marks the day in which the mentioned period ends (if the period mentioned is longer than a day)
 
-Exemplos:
-Data: 09/03/2025
-Usuário: "Você viu o que o Pedro fez ontem?"
-Resposta: {{ "dates" : [ {{ "start" : "08/03/2025" }} ] }}
+Examples:
+Date: 03/09/2025
+User: "Did you see what Pedro did yesterday?"
+Notes: The message asks if something happened YESTERDAY.
+Answer: {{ "dates" : [ {{ "start" : "03/08/2025" }} ] }}
 
-Data: 03/03/2025
-Usuário: "Tinha algum dever para semana passada? e para a anterior?"
-Resposta: "de 23/02/2025 até 01/03/2025 e 16/02/2025 até 22/02/2025"
-Resposta: {{ "dates" : [ {{ "start" : "23/02/2025", "end" : "01/03/2025" }}, {{ "start" : "16/02/2025", "end" : "22/02/2025" }} ] }}
+Date: 03/03/2025
+User: "Was there homework due last week? What about the week before?"
+Notes: The message asks if something happened LAST WEEK. Then, it asks if something happened the WEEK BEFORE that.
+Answer: {{ "dates" : [ {{ "start" : "02/23/2025", "end" : "03/01/2025" }}, {{ "start" : "02/16/2025", "end" : "02/22/2025" }} ] }}
 
-Data: 12/03/2025
-Usuário: "Já te contei esta história antes?"
-Resposta: {{ "dates" : [] }}
+Date: 03/12/2025
+User: "Have I told yout that story before?"
+Notes: The message does not mention a time period.
+Answer: {{ "dates" : [] }}
 
-Data: 12/03/2025
-Usuário: "Quando falamos disso?"
-Resposta: {{ "dates" : [] }}
+Date: 03/12/2025
+User: "When did we talk about this?"
+Notes: The message does not mention a time period.
+Answer: {{ "dates" : [] }}
 
-Data: 09/03/2025
-Usuário: "falamos disso há algumas semanas."
-Resposta: {{ "dates" : [ {{ "start": "23/02/2025", "end": "08/03/2025" }} ] }}
+Date: 03/09/2025
+User: "We talked about that some weeks ago."
+Notes: The message mentions 'SOME WEEKS AGO', which could mean a couple of weeks ago.
+Answer: {{ "dates" : [ {{ "start": "02/23/2025", "end": "03/08/2025" }} ] }}
 
-Sua vez:
-Data de hoje: {today}
-Usuário: """
+Date: 09/03/2025
+User: "Rembember when I did this?"
+Notes: No specific time period was mentioned.
+Answer: {{ "dates" : [] }}
+
+Your turn!
+Today's date: {today}
+User: """
 
 
 from transformers import PreTrainedTokenizer, PreTrainedTokenizerFast

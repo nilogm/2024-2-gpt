@@ -28,7 +28,7 @@ def theme_from_rake(query):
         rake.extract_keywords_from_text(query)
         print(f"len of keyword list = {len(rake.get_ranked_phrases())}")
         return " ".join([keyword for keyword in rake.get_ranked_phrases()])
-    
+
     except Exception as e:
         print("Error: ", str(e))
         traceback.print_exc()
@@ -43,7 +43,7 @@ def theme_from_pegasus(query):
         tokens = tokenizer(query, truncation=True, padding="longest", return_tensors="pt")
         theme_tokens = model.generate(**tokens)
         return tokenizer.decode(theme_tokens[0], skip_special_tokens=True)
-    
+
     except Exception as e:
         print("Error: ", str(e))
         traceback.print_exc()
@@ -58,7 +58,7 @@ def theme_from_bart(query):
         tokens = tokenizer(query, truncation=True, padding="longest", return_tensors="pt")
         theme_tokens = model.generate(**tokens)
         return tokenizer.decode(theme_tokens[0], skip_special_tokens=True)
-    
+
     except Exception as e:
         print("Error: ", str(e))
         traceback.print_exc()

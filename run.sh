@@ -1,0 +1,1 @@
+poetry run gpt test configs.json

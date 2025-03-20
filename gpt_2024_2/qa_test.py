@@ -5,25 +5,19 @@ from tqdm import tqdm
 from gpt_2024_2.model.brain_bot import BrainBot
 
 
-def test_qa(model: BrainBot, generative_codename: str, encoder_codename: str, results_dir: str, test_dir: str, qa_file: str):
-    csv_path = os.path.join(test_dir, qa_file)
-    df = pd.read_csv(csv_path)
+def test_qa(model: BrainBot, generative_codename: str, encoder_codename: str, results_dir: str, qa_file: str):
+    df = pd.read_csv(qa_file, comment="#")
 
-    df.reset_index(inplace=True)
-    df["qa_file"] = qa_file
-
-    filename = f"{qa_file.removesuffix('.csv').split('_')[0]}__{generative_codename}__{encoder_codename}.csv"
-
+    filename = f"{generative_codename}__{encoder_codename}__{model.retriever.top_k}__{model.retriever.summarizer}.csv"
     csv_path = os.path.join(results_dir, filename)
-
-    print(f"Generating answers and saving in {filename}")
+    print(f"Generating answers and saving in {csv_path}")
 
     try:
         df["system_answer"] = ""
-        df["rag_context"] = ""
-        df["llm_response"] = ""
         df["dates"] = ""
-        df.drop(columns=["llm_response"], inplace=True)
+        df["conversations"] = ""
+        df["conversations_idx"] = ""
+        df["retrieval_time"] = ""
 
         pbar = tqdm(total=len(df.index))
         count = 0
@@ -32,14 +26,13 @@ def test_qa(model: BrainBot, generative_codename: str, encoder_codename: str, re
 
             row = df.iloc[idx]
             question = row["question"]
-            response, dates, rag_context, memory_used, retrieval_time, query_time = model.ask(question)
+            response, dates, conversations, conversations_idx, retrieval_time = model.ask(question)
 
             df.at[idx, "system_answer"] = response
             df.at[idx, "dates"] = dates
-            df.at[idx, "rag_context"] = rag_context
-            df.at[idx, "memory_used"] = memory_used
+            df.at[idx, "conversations"] = conversations
+            df.at[idx, "conversations_idx"] = conversations_idx
             df.at[idx, "retrieval_time"] = retrieval_time
-            df.at[idx, "query_time"] = query_time
 
             count += 1
             inc = count - pbar.n

@@ -6,7 +6,7 @@ from transformers.tokenization_utils import PreTrainedTokenizer
 from transformers.tokenization_utils_fast import PreTrainedTokenizerFast
 
 
-def init_model(model_id, hf_auth, verbose=False, device_map=0, init: bool = False) -> Tuple[Pipeline, Any, PreTrainedTokenizer | PreTrainedTokenizerFast]:
+def init_model(model_id, hf_auth, verbose=False, device_map=0) -> Tuple[Pipeline, Any, PreTrainedTokenizer | PreTrainedTokenizerFast]:
     if verbose:
         print("Initializing LLM model...")
         print(model_id)
@@ -45,10 +45,6 @@ def init_model(model_id, hf_auth, verbose=False, device_map=0, init: bool = Fals
         temperature=None,
         top_p=None,
     )
-    non_deterministic = dict(
-        temperature=0.5,  # 'randomness' of outputs, 0.0 is the min and 1.0 the max
-        do_sample=True,
-    )
 
     # Initialize pipeline
     model_pipeline = transformers.pipeline(
@@ -62,7 +58,7 @@ def init_model(model_id, hf_auth, verbose=False, device_map=0, init: bool = Fals
         max_new_tokens=1024,  # max number of tokens to generate in the output
         repetition_penalty=1.1,
         **deterministic,
-        batch_size=(8 if init else 1),
+        batch_size=1,
     )
 
     model_pipeline.tokenizer.pad_token_id = model.config.eos_token_id if isinstance(model.config.eos_token_id, int) else model.config.eos_token_id[0]
