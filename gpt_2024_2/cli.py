@@ -1,10 +1,11 @@
 import typer
 import json
 import os
-from gpt_2024_2.qa_test import test_qa
+import datetime
+from gpt_2024_2.experiment import test_qa
 from gpt_2024_2.utils import load_env, path_check, set_device
 from gpt_2024_2.model.brain_bot import BrainBot
-import gpt_2024_2.evaluate_chatbot_answers as evaluate_chatbot_answers
+import gpt_2024_2.evaluation as evaluation
 from itertools import product
 
 hf_auth = load_env()
@@ -23,29 +24,30 @@ def read_configs(config_file: str):
     with open(config_file) as f:
         configs = json.load(f)
 
-    return product(configs["generator_codename"], configs["encoder_codename"], configs["top_k"], configs["summarizer"])
+    return (
+        [{"generator": i, "encoder": j, "top_k": k, "summarizer": l} for i, j, k, l in product(configs["generator"], configs["encoder"], configs["top_k"], configs["summarizer"])],
+        configs["memories_path"],
+        configs["memory_end_date"],
+        configs["today_date"],
+        configs["qa_file"],
+        configs["results_dir"],
+    )
 
 
-@app_experiment.command(help="Tests the RAG system with a Q&A dataset")
-def test(
-    config_file: str,
-    device: str = 0,
-    verbose: bool = True,
-    qa_file: str = "dataset/test/qa.csv",
-    results_dir: str = "results",
-):
+@app_experiment.command(help="Executes the experiments described in the configuration file")
+def experiment(config_file: str, device: str = 0, verbose: bool = True):
+    params, memories_path, memory_end_date, today_date, qa_file, results_dir = read_configs(config_file)
     device_ = set_device(device)
     path_check(results_dir)
 
-    model = BrainBot(device=device_)
-    for generator, encoder, top_k, summarizer in read_configs(config_file):
-        print(generator, encoder, top_k, summarizer)
-        model.setup_models(generator, encoder, top_k=top_k, summarizer=summarizer)
-        # test_qa(model, generator[0], encoder[0], results_dir=results_dir, qa_file=qa_file)
+    model = BrainBot(device=device_, memories_path=memories_path, memory_end_date=datetime.datetime.strptime(memory_end_date, "%m/%d/%Y").date(), today_date=today_date)
+    for p in params:
+        model.setup_models(**p, verbose=verbose)
+        test_qa(model, p["generator"]["nickname"], p["encoder"]["nickname"], results_dir=results_dir, qa_file=qa_file)
 
 
-@app_experiment.command(help="Executes metrics on the results of the tests")
-def eval(results_dir: str, out_dir: str, device: str = 0):
+@app_experiment.command(help="Executes metrics on the results of the given experiment folder")
+def evaluate(results_dir: str, out_dir: str, device: str = 0):
     device_ = set_device(device)
     path_check(out_dir)
-    evaluate_chatbot_answers.evaluate(results_dir, out_dir, device_)
+    evaluation.evaluate(results_dir, out_dir, device_)

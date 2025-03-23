@@ -6,26 +6,23 @@ import faiss
 import time
 from faiss import read_index
 from sentence_transformers import SentenceTransformer
-from gpt_2024_2.model.summarizer import get_theme, SUMMARIZERS
 
 
-def _get_files(file: dict):
+def _get_files(corpus: str, index: str):
     try:
-        index: faiss.swigfaiss.IndexIDMap = read_index(file["index"])
-        chunks = pd.read_csv(file["corpus"])
+        index: faiss.swigfaiss.IndexIDMap = read_index(index)
+        chunks = pd.read_csv(corpus)
         chunks["date"] = pd.to_datetime(chunks["date"], dayfirst=True).dt.date
         return index, chunks
     except Exception:
-        raise FileNotFoundError(f"One of the following necessary files were not found: '{file['corpus']}' or '{file['index']}'")
+        raise FileNotFoundError(f"One of the following necessary files were not found: '{corpus}' or '{index}'")
 
 
 class SentenceRetriever:
-    def __init__(self, encoder_model_id: str, top_k: int = 3, summarizer: str = "default", rand_sample_percent: float = 0.01, device: int = 0, **kwargs):
+    def __init__(self, encoder_model_id: str, top_k: int = 3, device: int = 0, **kwargs):
         self.encoder_model_id = encoder_model_id
         self.device = device
         self.top_k = top_k
-        self.summarizer = summarizer if summarizer in SUMMARIZERS.keys() else "default"
-        self.rand_sample_percent = rand_sample_percent if rand_sample_percent <= 1.0 else 1.0
         self.model = None
 
     def load(self):
@@ -36,25 +33,24 @@ class SentenceRetriever:
         del self.model
         self.model = None
 
-    def load_database(self, files: dict):
-        self.data_chunks, self.df_data = _get_files(files)
+    def load_database(self, corpus: str, index: str):
+        self.data_chunks, self.df_data = _get_files(corpus=corpus, index=index)
 
     def fetch_conversation(self, dataframe_idx, dates: dict) -> str:
         info = self.df_data.iloc[dataframe_idx]
-        include = len(dates["dates"]) == 0
 
-        for i in dates["dates"]:
-            start_date = pd.to_datetime(i["start"], dayfirst=False).date()
-            if "end" in i:
-                end_date = pd.to_datetime(i["end"], dayfirst=False).date()
-                if start_date <= info["date"] <= end_date:
-                    include = True
+        if len(dates["dates"]) > 0:
+            for i in dates["dates"]:
+                start_date = pd.to_datetime(i["start"], dayfirst=False).date()
+                if "end" in i:
+                    end_date = pd.to_datetime(i["end"], dayfirst=False).date()
+                    if start_date <= info["date"] <= end_date:
+                        break
+                else:
+                    if start_date == info["date"]:
+                        break
             else:
-                if start_date == info["date"]:
-                    include = True
-
-        if not include:
-            return ""
+                return ""
 
         text = f"Date: {info['date']}, {info['weekday']}\n" + "\n".join([f" > {'User' if i %2 == 0 else 'You'}: {msg}" for i, msg in enumerate(eval(info["dialog"]))])
         return text
@@ -63,38 +59,35 @@ class SentenceRetriever:
         include_idx = []
 
         for i in dates["dates"]:
-            start_date = pd.to_datetime(i["start"]).date()
+            start_date = pd.to_datetime(i["start"], dayfirst=False).date()
             if "end" in i:
-                end_date = pd.to_datetime(i["end"]).date()
+                end_date = pd.to_datetime(i["end"], dayfirst=False).date()
                 include_idx.extend(self.df_data[(start_date <= self.df_data["date"]) & (self.df_data["date"] <= end_date)].index)
             else:
                 include_idx.extend(self.df_data[(start_date == self.df_data["date"])].index)
 
         return include_idx
 
-    # olhar também aleatoriamente uma % muito pequena da nossa memória
-    # Não melhora significativamente o resultado e fica grande demais pra ler e validar
-    def get_rand_sample(self):
-        if self.rand_sample_percent <= 0.0:
-            return []
-
-        total_items = len(self.df_data) // 2
-        return [self.fetch_conversation(self.df_data, idx) for idx in np.random.choice(total_items, size=int(total_items * self.rand_sample_percent), replace=False)]
-
-    def retrieve(self, query, dates: dict, verbose: bool = False):
+    def retrieve(self, query, dates: dict):
         t = time.time()
 
         try:
             # mantendo o padrão de busca em vizinhança do tema/query
-            encoded_query = self.model.encode([get_theme(query, self.summarizer)])
+            encoded_query = self.model.encode([query])
 
-            search_items = self.data_chunks.search(encoded_query, self.top_k)
+            search_items = self.data_chunks.search(encoded_query, self.top_k * 3)
             top_k_ids_text = search_items[1][0]  # retorna [(dist, ), (ids, )]
 
             unique, index = np.unique(top_k_ids_text, return_index=True)
             top_k_ids = unique[index.argsort()]
 
-            results = [(idx, self.fetch_conversation(idx, dates)) for idx in top_k_ids[: self.top_k]]
+            results = []
+            for i in top_k_ids:
+                conv = self.fetch_conversation(i, dates)
+                if conv != "":
+                    results.append((i, conv))
+                if len(results) >= self.top_k:
+                    break
 
         except Exception as e:
             print("Error: ", str(e))
@@ -102,12 +95,10 @@ class SentenceRetriever:
             print("An error occured when retrieving memories!")
 
         et = time.time() - t
-        if verbose:
-            print(">>>> Results in Total Time: {}".format(et))
 
         return results, et
 
-    def retrieve_by_date(self, dates: dict, verbose: bool = True):
+    def retrieve_by_date(self, dates: dict):
         t = time.time()
 
         try:
@@ -120,7 +111,5 @@ class SentenceRetriever:
             print("An error occured when retrieving memories!")
 
         et = time.time() - t
-        if verbose:
-            print(">>>> Results in Total Time: {}".format(et))
 
         return results, et

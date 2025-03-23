@@ -15,6 +15,7 @@ The JSON must be formatted in the following format: {{ "dates" : [ <items> ] }},
  - Each item in <items> must be in the format {{ "start": <start_date>, "end": <end_date> }}
  - <start_date> marks the day in which the mentioned period starts
  - <end_date> marks the day in which the mentioned period ends (if the period mentioned is longer than a day)
+Please, format the dates only as following: month/day/year. And please, be sure that the date you mention corresponds to the weekday the user mentions, if any.
 
 Examples:
 Date: 03/09/2025
@@ -28,7 +29,7 @@ Notes: The message asks if something happened LAST WEEK. Then, it asks if someth
 Answer: {{ "dates" : [ {{ "start" : "02/23/2025", "end" : "03/01/2025" }}, {{ "start" : "02/16/2025", "end" : "02/22/2025" }} ] }}
 
 Date: 03/12/2025
-User: "Have I told yout that story before?"
+User: "Have I told you that story before?"
 Notes: The message does not mention a time period.
 Answer: {{ "dates" : [] }}
 
@@ -40,15 +41,34 @@ Answer: {{ "dates" : [] }}
 Date: 03/09/2025
 User: "We talked about that some weeks ago."
 Notes: The message mentions 'SOME WEEKS AGO', which could mean a couple of weeks ago.
-Answer: {{ "dates" : [ {{ "start": "02/23/2025", "end": "03/08/2025" }} ] }}
+Answer: {{ "dates" : [ {{ "start": "02/23/2025", "end": "03/01/2025" }} ] }}
 
 Date: 09/03/2025
-User: "Rembember when I did this?"
-Notes: No specific time period was mentioned.
+User: "What was I doing a year ago?"
+Notes: Retrieve only a short period, as a year contains many memories.
+Answer: {{ "dates" : [ {{ "start": "03/07/2024", "end": "03/11/2024" }} ] }}
+
+Date: 09/03/2025
+User: "Rembember when you said this?"
+Notes: No specific time period was mentioned, so no dates should be extracted.
 Answer: {{ "dates" : [] }}
 
-Your turn!
+Your turn! Return only the JSON with the dates.
 Today's date: {today}
+User: """
+
+
+RELEVANCY_PROMPT = """You are going to receive some conversations between you and the user. Determine which conversations are relevant to answer the user's question givent their content and date.
+At the end, return only a JSON with the indices of the relevant conversations.
+Examples:
+ - if only conversations 2, 6 and 7 are necessary to answer the question, answer only with "{{ "relevant_conversations": [2, 6, 7] }}"
+ - if no conversation is necessary to answer the question, answer only with "{{ "relevant_conversations": [] }}"
+ 
+These are the conversations, with each one containing an index and the day they happened:
+{conversations}
+
+
+Now, consider that today is {today}. Read the user's message below and determine which conversations are needed to respond to the user's message. Please respond only with the mentioned JSON format.
 User: """
 
 

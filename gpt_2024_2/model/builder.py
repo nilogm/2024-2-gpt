@@ -6,9 +6,10 @@ import time
 import faiss
 import datetime
 from sentence_transformers import SentenceTransformer
+from gpt_2024_2.model.summarizer import get_theme, SUMMARIZERS
 
 
-def build_chunks(path: str, destination_path: str, key: str, verbose: bool = False):
+def build_chunks(path: str, destination_path: str, end_date: datetime.date = datetime.date(2025, 3, 3), verbose: bool = False):
     corpora = pd.DataFrame(columns=["id", "dialog", "date", "weekday"])
 
     if verbose:
@@ -17,31 +18,32 @@ def build_chunks(path: str, destination_path: str, key: str, verbose: bool = Fal
     for filename in os.listdir(path):
         if filename.endswith(".csv"):
             df = pd.read_csv(os.path.join(path, filename))
-            df = modify_df(df)
-            # df.to_csv("memories_w_dates.csv", index=False)
-            corpora = pd.concat([corpora, pd.DataFrame({"id": df["conversation_id"], "dialog": df["dialog"], "date": df["date"], "weekday": df["weekday"]})], ignore_index=True)[:1000]
+            df = modify_df(df, end_date=end_date)
+            corpora = pd.concat([corpora, pd.DataFrame({"id": df["conversation_id"], "dialog": df["dialog"], "date": df["date"], "weekday": df["weekday"]})], ignore_index=True)
 
     if verbose:
         print(corpora.tail())
         print("Done building memories from conversations.")
 
     corpora.reset_index(inplace=True)
-    corpora.to_csv(f"{destination_path}/{key}.csv", index=False, escapechar="\\")
+    corpora.to_csv(f"{destination_path}/memories.csv", index=False, escapechar="\\")
 
     if verbose:
         print(f"Conversation memory saved in '{destination_path}'")
 
 
-def build_index(source: str, destination: str, encoder_model: SentenceTransformer, encoder_model_dimensions: int = 1024, verbose: bool = False):
+def build_index(source: str, destination: str, encoder_model: SentenceTransformer, encoder_model_dimensions: int = 1024, summarizer: str = "default", verbose: bool = False):
     if verbose:
         print(f"Creating index from {source}...")
 
     t = time.time()
     df = pd.read_csv(source)
     df["dialog"] = df["dialog"].apply(lambda x: eval(x))
-    df = df.explode("dialog")
 
-    encoded_data = encoder_model.encode(df["dialog"].tolist(), show_progress_bar=verbose)
+    summarizer_ = summarizer if summarizer in SUMMARIZERS.keys() else "default"
+    themes = df["dialog"].apply(lambda x: get_theme("\n".join([f" > {'User' if i %2 == 0 else 'You'}: {msg}" for i, msg in enumerate(x)]), summarizer_)).tolist()
+
+    encoded_data = encoder_model.encode(themes, show_progress_bar=verbose)
     encoded_data = np.asarray(encoded_data.astype("float32"))
     index = faiss.IndexIDMap(faiss.IndexFlatIP(encoder_model_dimensions))
     index.add_with_ids(encoded_data, df["id"].to_numpy())
@@ -53,9 +55,8 @@ def build_index(source: str, destination: str, encoder_model: SentenceTransforme
         print(f"Index saved to '{destination}'")
 
 
-def modify_df(df: pd.DataFrame):
+def modify_df(df: pd.DataFrame, end_date: datetime.date = datetime.date(2025, 3, 3)):
     df["dialog"] = df["dialog"].apply(lambda x: [j.strip() for i in re.findall(r"'([^']*)'|\"([^\"]*)\"", x) for j in i if len(j.strip()) > 0])
-    start_date = datetime.date(2025, 3, 3)
-    df["date"] = df.apply(lambda x: (start_date - datetime.timedelta(days=x["conversation_id"])).strftime("%d/%m/%Y"), axis=1)
+    df["date"] = df.apply(lambda x: (end_date - datetime.timedelta(days=x["conversation_id"])).strftime("%d/%m/%Y"), axis=1)
     df["weekday"] = pd.to_datetime(df["date"], format="%d/%m/%Y").dt.day_name()
     return df

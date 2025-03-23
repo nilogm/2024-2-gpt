@@ -1,0 +1,30 @@
+{
+    "generator": [
+        {
+            "nickname": "llama",
+            "model_id": "meta-llama/Llama-3.1-8B-Instruct"
+        },
+        {
+            "nickname": "glm",
+            "model_id": "THUDM/glm-4-9b-chat"
+        }
+    ],
+    "encoder": [
+        {
+            "nickname": "gte",
+            "model_id": "thenlper/gte-large",
+            "dimensions": 1024
+        }
+    ],
+    "top_k": [
+        3
+    ],
+    "summarizer": [
+        "default"
+    ],
+    "memories_path": "dataset/memories",
+    "memory_end_date": "03/03/2025",
+    "today_date": "Sunday, March 9th, 2025",
+    "qa_file": "dataset/test/qa3.csv",
+    "results_dir": "results_exp3"
+}

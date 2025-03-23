@@ -1,0 +1,33 @@
+{
+    "generator": [
+        {
+            "nickname": "llama",
+            "model_id": "meta-llama/Llama-3.1-8B-Instruct"
+        }
+    ],
+    "encoder": [
+        {
+            "nickname": "gte",
+            "model_id": "thenlper/gte-large",
+            "dimensions": 1024
+        }
+    ],
+    "top_k": [
+        3,
+        5,
+        7,
+        9
+    ],
+    "summarizer": [
+        "default",
+        "bart",
+        "rake",
+        "yake",
+        "pegasus"
+    ],
+    "memories_path": "dataset/memories",
+    "memory_end_date": "03/03/2025",
+    "today_date": "Sunday, March 9th, 2025",
+    "qa_file": "dataset/test/qa2.csv",
+    "results_dir": "results_exp2"
+}

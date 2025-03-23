@@ -49,6 +49,7 @@ seaborn = "^0.13.2"
 
 [tool.poetry.group.dev.dependencies]
 ipdb = "^0.13.13"
+ipykernel = "^6.29.5"
 
 [tool.poetry.scripts]
 gpt = "gpt_2024_2.cli:_exec_run"

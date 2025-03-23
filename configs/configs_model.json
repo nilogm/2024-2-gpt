@@ -1,0 +1,44 @@
+{
+    "generator": [
+        {
+            "nickname": "llama",
+            "model_id": "meta-llama/Llama-3.1-8B-Instruct"
+        },
+        {
+            "nickname": "glm",
+            "model_id": "THUDM/glm-4-9b-chat"
+        },
+        {
+            "nickname": "deepseek",
+            "model_id": "deepseek-ai/DeepSeek-R1-Distill-Llama-8B"
+        }
+    ],
+    "encoder": [
+        {
+            "nickname": "gte",
+            "model_id": "thenlper/gte-large",
+            "dimensions": 1024
+        },
+        {
+            "nickname": "jina",
+            "model_id": "jinaai/jina-embeddings-v3",
+            "dimensions": 1024
+        },
+        {
+            "nickname": "multilingual",
+            "model_id": "intfloat/multilingual-e5-large-instruct",
+            "dimensions": 1024
+        }
+    ],
+    "top_k": [
+        3
+    ],
+    "summarizer": [
+        "default"
+    ],
+    "memories_path": "dataset/memories",
+    "memory_end_date": "03/03/2025",
+    "today_date": "Sunday, March 9th, 2025",
+    "qa_file": "dataset/test/qa1.csv",
+    "results_dir": "results_exp1"
+}
