@@ -6,7 +6,7 @@ Este repositório contém a implementação de uma memória episódica para mode
 
 O sistema foi projetado para simular a memória episódica, ou seja, a capacidade de lembrar interações passadas em um contexto específico. Para isso, o processo é dividido nas seguintes etapas:
 
-1. **Obtenção do Dataset de Conversações**: Utilizamos um [conjunto de dados](https://www.kaggle.com/datasets/thedevastator/dailydialog-unlock-the-conversation-potential-in?select=test.csv) de conversações entre o modelo e o usuário, onde cada diálogo é atribuído a uma data, representando o dia em que a conversa aconteceu.
+1. **Obtenção do Dataset de Conversações**: Utilizamos um [conjunto de dados](https://www.kaggle.com/datasets/thedevastator/dailydialog-unlock-the-conversation-potential-in?select=test.csv) de conversações entre o modelo e o usuário, onde cada diálogo é atribuído a uma data, representando o dia em que a conversa aconteceu. O dataset modificado pode ser encontrado neste mesmo repositório, em `dataset`.
 
 2. **Geração de Embeddings**: Cada diálogo é transformado em embeddings, que são vetores numéricos que representam semanticamente o conteúdo da conversa. O processo de geração de embeddings pode ser feito de duas maneiras:
     - **Diálogos diretos**: Usando os diálogos de forma direta para gerar os embeddings.
@@ -56,21 +56,23 @@ Este arquivo deve conter informações sobre quais experimentos devem ser execut
  - **encoder**: itens com informações sobre um modelo de encoding. Cada item deve conter os campos "nickname", "model_id" e "dimensions", que representam o apelido do modelo em arquivos criados pelo código, o ID do modelo no Hugging Face, e o número de dimensões que devem ser utilizadas.
  - **top_k**: um inteiro que indica o número de itens que devem der retornados pelo banco de vetores.
  - **summarizer**: strings que representam o método de sumarização dos diálogos do dataset para realizar os encodings. Valores aceitos são: "default", "bart", "rake", "yake", "pegasus". Quaisquer outros valores serão convertidos para "default".
-Cada item acima deve ser uma lista de possíveis valores, uma vez que o código irá fazer toda combinação possível de cada item dado acima.
+Cada item acima deve ser uma lista de possíveis valores, uma vez que o código irá fazer toda combinação possível de cada valor em cada campo.
 
 Adicionalmente, é necessário informar:
  - **memories_path**: caminho para o diretório que contém os arquivos de memória (em 'csv').
  - **memory_end_date**: a data mais recente a ser artificialmente inserida no dataset.
  - **today_date**: o dia que deve ser levado em consideração como 'hoje' pelo modelo generativo.
- - **qa_file**: o dataset de perguntas e respostas que deve ser aplicado para avaliação das configurações.
+ - **qa_file**: o dataset de perguntas e respostas que deve ser aplicado para avaliação das configurações. Um exemplo de dataset pode ser encontrado em `dataset/test/`
  - **results_dir**: diretório para onde devem ir os resultados dos testes.
 
 Na pasta `configs/` há vários exemplos de arquivos de configuração.
 
 ## Avaliação dos Resultados
 
-Para avaliar e gerar um documento com os gráficos e resultados das métricas aplicadas, execute o comando abaixo substituindo os valores entre '<' e '>'.
+Para avaliar os experimentos, execute o comando abaixo substituindo os valores entre '<' e '>'.
 
 ```bash
 poetry run gpt evaluate <diretório_de_entrada> <diretório_de_saída>
 ```
+
+O notebook `results.ipynb` apresenta exemplos de como fazer gráficos com os resultados obtidos.

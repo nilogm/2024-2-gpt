@@ -89,7 +89,7 @@ class BrainBot:
         if not os.path.exists(corpus):
             build_chunks(self.memories_path, self.data_dir, end_date=self.memory_end_date, verbose=verbose)
         if not os.path.exists(index):
-            build_index(corpus, index, encoder_model=self.retriever.model, encoder_model_dimensions=self.encoder_model_dimensions, verbose=verbose)
+            build_index(corpus, index, encoder_model=self.retriever.model, encoder_model_dimensions=self.encoder_model_dimensions, summarizer=self.summarizer, verbose=verbose)
 
         self.retriever.load_database(corpus, index)
 
@@ -112,14 +112,14 @@ class BrainBot:
         conversations = [i[1] for i in date_results + semantic_results]
 
         relevant_items_idx, relevance_time = self.check_relevancy(message, conversations)
-        context = "\n\n".join([conversations[i] for i in relevant_items_idx])
+        context = "\n\n".join([conversations[i] for i in relevant_items_idx if i < len(conversations)])
 
         prompt = CHAT_PROMPT.format(conversations=context, today=self.today_date)
         formatted_message = build_message(self.tokenizer, message, prompt)
 
         return (
             formatted_message,
-            (context, [conversations_idx[i] for i in relevant_items_idx], relevance_time),
+            (context, [conversations_idx[i] for i in relevant_items_idx if i < len(conversations_idx)], relevance_time),
             (dates, date_time_retrieval),
             (semantic_results, semantic_memory_time_retrieval),
             (date_results, date_memory_time_retrieval),

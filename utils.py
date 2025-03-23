@@ -7,7 +7,6 @@ import pandas as pd
 import os
 import numpy as np
 
-import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 from matplotlib.axes import Axes
 
@@ -27,20 +26,19 @@ answer_metrics = {
     # "rouge_score_precision": "ROUGE-L Precision",
     "rouge_score_recall": "ROUGE-L Recall",
     # "rouge_score_f1": "ROUGE-L F1",
-    "semantic_similarity_score": "Semantic Similarity",
+    "semantic_similarity_score": "Similaridade Semântica",
     "bert_precision_score": "BERTScore Precision",
 }
 
-# date_retrieved_right_date
-# relevant_retrieved_specific
-
 retrieval_metrics = {
-    "date_retrieved": "Date",
-    "date_retrieved_right_date": "Date (when needed)",
-    "semantic_retrieved": "Semantic",
-    "semantic_or_date_retrieved": "Semantic or Date",
-    "relevant_retrieved": "Relevance",
+    "date_retrieved": "Busca por Data",
+    "date_retrieved_right_date": "Busca por Data (c/ marcador)",
+    "semantic_retrieved": "Busca por Semântica",
+    "semantic_or_date_retrieved": "Busca por Semântica ou Data",
+    "relevant_retrieved": "Análise de Relevância",
 }
+
+all_metrics = [i for i in answer_metrics.keys()] + [i for i in retrieval_metrics.keys()]
 
 
 def read_folder(path: str) -> pd.DataFrame:
@@ -56,7 +54,7 @@ def read_folder(path: str) -> pd.DataFrame:
     return df
 
 
-def display_scores(df: pd.DataFrame, x: str, hue: str, x_name: str = None, x_labels: dict = None, hue_name: str = None, hue_labels: dict = None):
+def display_scores(df: pd.DataFrame, x: str, hue: str, x_name: str = None, x_labels: dict = None, hue_name: str = None, hue_labels: dict = None, img_name: str = None):
     if x not in df.columns or hue not in df.columns:
         raise ValueError("'x' and 'hue' both have to be valid columns in the DataFrame")
 
@@ -68,12 +66,16 @@ def display_scores(df: pd.DataFrame, x: str, hue: str, x_name: str = None, x_lab
     if hue_labels is not None:
         df["y"] = df["y"].map(hue_labels)
 
-    def setup_figure(fig, ax: np.ndarray, metrics: dict):
+    def setup_figure(fig, ax: np.ndarray, metrics: dict, error_bar=True):
         for (metric, title), a in zip(metrics.items(), ax.flatten()):
             a: Axes = a
             a.grid()
             a.set_title(title)
-            sns.barplot(data=df, y=metric, x="x", ax=a, palette="tab10", hue="y")
+            
+            if error_bar:
+                sns.barplot(data=df, y=metric, x="x", ax=a, palette="tab10", hue="y")
+            else:
+                sns.barplot(data=df, y=metric, x="x", ax=a, palette="tab10", hue="y", errorbar=None)
 
             a.set_ylim(0, 100)
             a.set_yticks(np.linspace(0, 100, 11))
@@ -89,6 +91,10 @@ def display_scores(df: pd.DataFrame, x: str, hue: str, x_name: str = None, x_lab
 
     fig, ax = plt.subplots(1, 3, figsize=[15, 5], tight_layout=True)
     setup_figure(fig, ax, answer_metrics)
+    plt.savefig(f"answer_{img_name}.svg", bbox_inches="tight")
 
     fig, ax = plt.subplots(1, 5, figsize=[25, 5], tight_layout=True)
-    setup_figure(fig, ax, retrieval_metrics)
+    setup_figure(fig, ax, retrieval_metrics, False)
+    plt.savefig(f"retrieval_{img_name}.svg", bbox_inches="tight")
+
+    print(df.groupby([x, hue]).agg({i: ["mean", "std"] for i in all_metrics}))

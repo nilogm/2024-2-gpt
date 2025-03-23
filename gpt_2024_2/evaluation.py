@@ -88,18 +88,19 @@ def ragas_semantic(wrapped_llm: LangchainLLMWrapper, wrapped_embeddings: Langcha
     dataset = results.apply(to_sample, axis=1)
     ragas_dataset = EvaluationDataset.from_list(dataset.to_list())
 
-    result = ragas_evaluate(dataset=ragas_dataset, llm=wrapped_llm, metrics=[SemanticSimilarity(embeddings=wrapped_embeddings), RougeScore(measure_type="recall")], raise_exceptions=True).to_pandas()
+    result = ragas_evaluate(
+        dataset=ragas_dataset,
+        llm=wrapped_llm,
+        metrics=[SemanticSimilarity(embeddings=wrapped_embeddings), RougeScore(mode="recall"), RougeScore(mode="precision"), RougeScore(mode="fmeasure")],
+        raise_exceptions=True,
+    ).to_pandas()
     results["semantic_similarity_score"] = result["semantic_similarity"] * 100
     print(f"RAGAS's Semantic Similarity Score: ", results["semantic_similarity_score"].mean())
-    results["rouge_score_recall"] = result["rouge_score"] * 100
+    results["rouge_score_recall"] = result["rouge_score(mode=recall)"] * 100
     print(f"RAGAS's Rouge-L Recall Score: ", results["rouge_score_recall"].mean())
-
-    result = ragas_evaluate(dataset=ragas_dataset, llm=wrapped_llm, metrics=[RougeScore(measure_type="precision")], raise_exceptions=True).to_pandas()
-    results["rouge_score_precision"] = result["rouge_score"] * 100
+    results["rouge_score_precision"] = result["rouge_score(mode=precision)"] * 100
     print(f"RAGAS's Rouge-L Precision Score: ", results["rouge_score_precision"].mean())
-
-    result = ragas_evaluate(dataset=ragas_dataset, llm=wrapped_llm, metrics=[RougeScore(measure_type="fmeasure")], raise_exceptions=True).to_pandas()
-    results["rouge_score_f1"] = result["rouge_score"] * 100
+    results["rouge_score_f1"] = result["rouge_score(mode=fmeasure)"] * 100
     print(f"RAGAS's Rouge-L F1 Score: ", results["rouge_score_f1"].mean())
 
     return results

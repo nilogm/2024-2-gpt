@@ -17,10 +17,10 @@
         }
     ],
     "top_k": [
-        3
+        9
     ],
     "summarizer": [
-        "default"
+        "rake"
     ],
     "memories_path": "dataset/memories",
     "memory_end_date": "03/03/2025",

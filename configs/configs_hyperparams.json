@@ -20,10 +20,8 @@
     ],
     "summarizer": [
         "default",
-        "bart",
         "rake",
-        "yake",
-        "pegasus"
+        "yake"
     ],
     "memories_path": "dataset/memories",
     "memory_end_date": "03/03/2025",
