@@ -35,6 +35,8 @@ Para instalar as dependências do projeto, basta rodar o seguinte comando:
 poetry install
 ```
 
+Observação: caso a instalação fique pendente por muito tempo, cancele a instalação, execute `export PYTHON_KEYRING_BACKEND=keyring.backends.fail.Keyring` no terminal, e tente novamente.
+
 Também é necessário inserir uma chave do [Hugging Face](https://huggingface.co) em um arquivo `sample.env` na pasta do repositório.
 
 ```bash
