@@ -23,7 +23,7 @@ def theme_from_yake(query):
 def theme_from_rake(query):
     try:
         download_punkt()  # se já existir, não faz nada
-        nltk.download("stopwords", download_dir=os.getcwd(), quiet=True)
+        nltk.download("stopwords", quiet=True)
         rake = Rake()
         rake.extract_keywords_from_text(query)
         return " ".join([keyword for keyword in rake.get_ranked_phrases()])
