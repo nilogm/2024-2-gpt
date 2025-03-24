@@ -2,6 +2,8 @@
 
 Este repositório contém a implementação de uma memória episódica para modelos generativos, projetada para melhorar a capacidade de um modelo de linguagem em manter e utilizar interações passadas com o usuário. Neste trabalho, utilizamos um dataset de conversações para simular várias interações passadas entre o modelo e o usuário, permitindo que o modelo acesse e utilize informações de diálogos anteriores com base no contexto temporal e de similaridade.
 
+O relatório deste repositório pode ser encontrado [aqui](https://github.com/nilogm/2024-2-gpt/blob/master/Relatório.pdf).
+
 ## Descrição do Funcionamento
 
 O sistema foi projetado para simular a memória episódica, ou seja, a capacidade de lembrar interações passadas em um contexto específico. Para isso, o processo é dividido nas seguintes etapas:
